@@ -1,1 +1,922 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Home - Gabriel Services</title><style>body{font-family:Inter,system-ui,sans-serif;margin:0;background:#0b0b10;color:#f4f7ff;line-height:1.6}.page{max-width:1100px;margin:0 auto;padding:24px}header{display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap;border:1px solid #3a2a55;border-radius:999px;padding:12px 16px;background:#121624}.site-nav,.tools{display:flex;gap:8px;flex-wrap:wrap}.site-nav a,.tools button{color:#e7c978;text-decoration:none;padding:8px 12px;border:1px solid #4b3869;border-radius:999px;background:transparent}.site-nav a.active{background:#7c3aed;color:#fff}.card{margin-top:28px;border:1px solid #3a2a55;border-radius:18px;padding:22px;background:#141a2b}footer{margin-top:40px;border-top:1px solid #3a2a55;padding-top:16px;color:#b0b9c9}.footer-links{display:flex;gap:12px;flex-wrap:wrap}.footer-links a{color:#e7c978}ul{padding-left:20px}</style></head><body><div class="page"><header><strong>Gabriel Services</strong><nav class="site-nav"><a class="active" href="/index.html">Home</a><a class="" href="/about/index.html">About</a><a class="" href="/careers/index.html">Careers</a><a class="" href="/contact/index.html">Contact</a></nav><div class="tools"><button type="button">EN</button><button type="button">Light</button></div></header><main class="card"><h1>Reliable day-to-day execution.</h1><p>Operational support delivered with clarity and follow-through.</p></main><footer><div class="footer-links"><a href="/learning/index.html">Learning</a><a href="/legal/terms.html">Legal Terms</a><a href="/legal/cookies.html">Cookies</a><a href="/legal/privacy-gdpr.html">Privacy & GDPR</a><a href="/services/index.html">Services</a></div><p>© 2026 Gabriel Services</p></footer></div></body></html>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Gabriel Services</title>
+
+  <style>
+    :root {
+      --mouse-x: 50vw;
+      --mouse-y: 50vh;
+
+      --bg: #050505;
+      --bg-2: #0b0907;
+      --surface: rgba(12, 17, 29, 0.88);
+      --surface-strong: rgba(12, 17, 29, 0.96);
+      --surface-soft: rgba(18, 26, 42, 0.72);
+
+      --text: #f4f7ff;
+      --text-strong: #ffffff;
+      --muted: #b0b9c9;
+
+      --purple: #7c3aed;
+      --purple-deep: #3b0764;
+      --purple-soft: rgba(124, 58, 237, 0.16);
+
+      --gold: #c49245;
+      --gold-2: #e7c978;
+      --gold-soft: rgba(196, 146, 69, 0.16);
+
+      --line: rgba(231, 201, 120, 0.16);
+      --line-strong: rgba(231, 201, 120, 0.35);
+
+      --radius-lg: 30px;
+      --radius-md: 24px;
+      --radius-sm: 16px;
+      --radius-pill: 999px;
+
+      --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.32);
+      --shadow-strong: 0 30px 90px rgba(0, 0, 0, 0.48);
+
+      --ease: 180ms ease;
+      --max: 1180px;
+      --reading: 780px;
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+
+      --bg: #f7f1e8;
+      --bg-2: #efe5d8;
+      --surface: rgba(255, 255, 255, 0.9);
+      --surface-strong: #ffffff;
+      --surface-soft: rgba(255, 255, 255, 0.72);
+
+      --text: #10091f;
+      --text-strong: #070312;
+      --muted: #5f5870;
+
+      --purple: #4c1d95;
+      --purple-deep: #2e1065;
+      --purple-soft: rgba(109, 40, 217, 0.16);
+
+      --line: rgba(76, 29, 149, 0.18);
+      --line-strong: rgba(76, 29, 149, 0.34);
+
+      --shadow-soft: 0 18px 50px rgba(38, 16, 72, 0.12);
+      --shadow-strong: 0 28px 80px rgba(38, 16, 72, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 6%, var(--purple-soft), transparent 32rem),
+        radial-gradient(circle at 92% 4%, var(--gold-soft), transparent 34rem),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      transition:
+        background 220ms ease,
+        color 220ms ease;
+    }
+
+    body.theme-dark::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(196, 146, 69, 0.15) 1px, transparent 1.45px);
+      background-size: 18px 18px;
+      opacity: 0.3;
+    }
+
+    body.theme-dark::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0;
+      background-image:
+        radial-gradient(circle, rgba(231, 201, 120, 0.42) 1px, transparent 1.8px),
+        radial-gradient(circle, rgba(124, 58, 237, 0.12) 1.6px, transparent 2.8px);
+      background-size: 18px 18px, 34px 34px;
+      -webkit-mask-image:
+        radial-gradient(
+          circle 170px at var(--mouse-x) var(--mouse-y),
+          black 0%,
+          black 30%,
+          transparent 74%
+        );
+      mask-image:
+        radial-gradient(
+          circle 170px at var(--mouse-x) var(--mouse-y),
+          black 0%,
+          black 30%,
+          transparent 74%
+        );
+      filter:
+        drop-shadow(0 0 1px rgba(231, 201, 120, 0.22))
+        drop-shadow(0 0 4px rgba(196, 146, 69, 0.12));
+      transition: opacity 160ms ease;
+    }
+
+    body.theme-dark.mouse-active::after {
+      opacity: 0.56;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 26px 0 70px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 48px;
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: grid;
+      gap: 2px;
+      text-decoration: none;
+    }
+
+    .brand strong {
+      color: var(--text-strong);
+      font-size: 1rem;
+      font-weight: 950;
+      letter-spacing: -0.04em;
+    }
+
+    .brand span {
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn,
+    .ui-toggle,
+    .theme-toggle {
+      appearance: none;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-pill);
+      background: var(--surface-strong);
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 800;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition:
+        background var(--ease),
+        color var(--ease),
+        border-color var(--ease),
+        transform var(--ease);
+    }
+
+    .nav-btn:hover,
+    .ui-toggle:hover,
+    .theme-toggle:hover {
+      color: var(--text-strong);
+      border-color: var(--line-strong);
+      transform: translateY(-1px);
+    }
+
+    .nav-btn.is-active {
+      color: var(--text-strong);
+      border-color: var(--line-strong);
+      background:
+        linear-gradient(135deg, var(--purple-soft), var(--gold-soft)),
+        var(--surface-strong);
+    }
+
+    .tools {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.75fr);
+      gap: clamp(28px, 5vw, 70px);
+      align-items: center;
+      padding: clamp(28px, 5vw, 64px) 0;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      margin: 0 0 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-pill);
+      padding: 8px 12px;
+      background: var(--gold-soft);
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 12ch;
+      margin: 0;
+      color: var(--text-strong);
+      font-size: clamp(3rem, 8.4vw, 6.7rem);
+      line-height: 0.92;
+      letter-spacing: -0.08em;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--text-strong);
+      font-size: clamp(2rem, 4.5vw, 4.1rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+    }
+
+    h3 {
+      margin: 0;
+      color: var(--text-strong);
+      font-size: 1.18rem;
+      letter-spacing: -0.03em;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .lead {
+      max-width: var(--reading);
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.06rem, 1.7vw, 1.32rem);
+      line-height: 1.68;
+    }
+
+    .intro {
+      max-width: var(--reading);
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      border-radius: var(--radius-pill);
+      padding: 0 22px;
+      font-weight: 950;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition:
+        transform var(--ease),
+        border-color var(--ease),
+        background var(--ease),
+        color var(--ease);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn.primary {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--purple), #a06cff);
+      box-shadow: 0 18px 44px rgba(124, 58, 237, 0.22);
+    }
+
+    .btn.ghost {
+      color: var(--text);
+      background:
+        linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(255, 255, 255, 0.03));
+      border-color: var(--line-strong);
+    }
+
+    .command-panel,
+    .content-panel,
+    .form-panel,
+    .legal-panel {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(180deg, var(--surface-strong), var(--surface));
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .command-panel::before,
+    .content-panel::before,
+    .form-panel::before,
+    .legal-panel::before,
+    .sample-card::before,
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      border: 1px solid rgba(231, 201, 120, 0.24);
+      box-shadow:
+        0 0 0 1px rgba(231, 201, 120, 0.12),
+        0 0 18px rgba(196, 146, 69, 0.1);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--ease);
+    }
+
+    .command-panel:hover::before,
+    .content-panel:hover::before,
+    .form-panel:hover::before,
+    .legal-panel:hover::before,
+    .sample-card:hover::before,
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .command-panel {
+      padding: 26px;
+    }
+
+    .panel-kicker {
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 950;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .panel-title {
+      color: var(--text-strong);
+      font-size: 1.7rem;
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      margin-bottom: 24px;
+    }
+
+    .metric-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .metric {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 12px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .metric strong {
+      color: var(--gold-2);
+      font-size: 1.1rem;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .section {
+      margin-top: clamp(58px, 8vw, 104px);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .section-intro {
+      max-width: var(--reading);
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: clamp(1rem, 1.55vw, 1.18rem);
+    }
+
+    .services {
+      display: grid;
+      gap: 10px;
+    }
+
+    .service-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      min-height: 117px;
+      padding: 29px 18px 29px 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      color: inherit;
+      text-decoration: none;
+      background:
+        linear-gradient(180deg, var(--surface-strong), var(--surface));
+      box-shadow: var(--shadow-soft);
+      transition:
+        transform var(--ease),
+        background var(--ease),
+        border-color var(--ease),
+        box-shadow var(--ease);
+    }
+
+    .service-card:hover {
+      transform: translateX(8px);
+      background:
+        linear-gradient(90deg, var(--purple-soft), transparent),
+        linear-gradient(180deg, var(--surface-strong), var(--surface));
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .service-index {
+      margin-left: 12px;
+      color: var(--gold);
+      font-size: 0.96rem;
+      font-weight: 950;
+    }
+
+    .service-title {
+      margin: 0;
+      color: var(--text-strong);
+      font-size: 1.28rem;
+      letter-spacing: -0.03em;
+    }
+
+    .service-copy {
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .service-action {
+      justify-self: end;
+      margin-right: 12px;
+      color: var(--gold-2);
+      font-weight: 950;
+    }
+
+    .sample-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .sample-card {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background:
+        linear-gradient(180deg, var(--surface-strong), var(--surface));
+      padding: 20px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .sample-card .number {
+      color: var(--gold);
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+    }
+
+    .sample-card p {
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .content-panel,
+    .legal-panel {
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    .content-panel p,
+    .legal-panel p,
+    .legal-panel li {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-pill);
+      padding: 8px 12px;
+      color: var(--gold-2);
+      background: var(--gold-soft);
+      font-size: 0.86rem;
+      font-weight: 850;
+    }
+
+    .form-panel {
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label,
+    legend {
+      color: var(--text-strong);
+      font-size: 0.92rem;
+      font-weight: 900;
+    }
+
+    .help {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface-strong);
+      color: var(--text);
+      padding: 12px 14px;
+      outline: none;
+      transition:
+        border-color var(--ease),
+        box-shadow var(--ease),
+        background var(--ease);
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--line-strong);
+      box-shadow: 0 0 0 4px var(--gold-soft);
+    }
+
+    fieldset {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin: 0;
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .check input {
+      width: auto;
+      min-height: auto;
+    }
+
+    .status {
+      margin-top: 16px;
+      color: var(--muted);
+      min-height: 24px;
+    }
+
+    .legal-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .legal-item {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .site-footer {
+      margin-top: clamp(60px, 8vw, 110px);
+      border-top: 1px solid var(--line);
+      padding-top: clamp(28px, 4vw, 46px);
+      color: var(--muted);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr repeat(3, 1fr);
+      gap: clamp(22px, 4vw, 54px);
+    }
+
+    .footer-brand,
+    .footer-col {
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+
+    .footer-brand strong,
+    .footer-col strong {
+      color: var(--text-strong);
+      font-weight: 950;
+      letter-spacing: -0.03em;
+    }
+
+    .footer-brand p {
+      max-width: 36ch;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .footer-col a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 760;
+      line-height: 1.35;
+      transition:
+        color var(--ease),
+        transform var(--ease);
+    }
+
+    .footer-col a:hover {
+      color: var(--text-strong);
+      transform: translateX(4px);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: clamp(28px, 4vw, 44px);
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 520ms ease,
+        transform 520ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .sample-grid,
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 740px) {
+      .page {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .site-header {
+        align-items: flex-start;
+        flex-direction: column;
+        border-radius: 22px;
+      }
+
+      .site-nav,
+      .tools {
+        width: 100%;
+      }
+
+      .nav-btn,
+      .ui-toggle,
+      .theme-toggle {
+        flex: 1 1 auto;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 15vw, 4.5rem);
+      }
+
+      .service-card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 29px 18px;
+      }
+
+      .service-action {
+        justify-self: start;
+        margin-right: 0;
+        margin-left: 12px;
+      }
+
+      .sample-grid,
+      .form-grid,
+      .footer-grid,
+      .check-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (hover: none), (pointer: coarse) {
+      body.theme-dark::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="theme-dark">
+  <div class="page">
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Gabriel Services home">
+        <strong>Gabriel Services</strong>
+        <span id="brandTagline">Outsource, Delivered</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Sample page navigation">
+        <button class="nav-btn is-active" data-page="home">Home</button>
+        <button class="nav-btn" data-page="contact">Contact</button>
+        <button class="nav-btn" data-page="careers">Careers</button>
+        <button class="nav-btn" data-page="services-it">IT</button>
+        <button class="nav-btn" data-page="services-admin">Admin</button>
+        <button class="nav-btn" data-page="services-customer">Customer</button>
+        <button class="nav-btn" data-page="services-logistics">Logistics</button>
+        <button class="nav-btn" data-page="learning-it">Learning</button>
+        <button class="nav-btn" data-page="legal-terms">Legal</button>
+      </nav>
+
+      <div class="tools" aria-label="Display controls">
+        <button class="ui-toggle" id="langToggle" type="button">ES</button>
+        <button class="theme-toggle" id="themeToggle" type="button">Light</button>
+      </div>
+    </header>
+
+    <main id="app" aria-live="polite"></main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <strong>Gabriel Services</strong>
+          <p id="footerDescription">
+            Business support for logistics, admin, customer relations, and IT workflows.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <strong>Company</strong>
+          <a href="#" data-footer-page="home">Home</a>
+          <a href="#" data-footer-page="services-it">Services</a>
+          <a href="#" data-footer-page="careers">Careers</a>
+        </div>
+
+        <div class="footer-col">
+          <strong>Support</strong>
+          <a href="#" data-footer-page="contact">Contact</a>
+          <a href="#" data-footer-page="learning-it">Learning</a>
+          <a href="#">Sitemap</a>
+        </div>
+
+        <div class="footer-col">
+          <strong>Legal</strong>
+          <a href="#" data-footer-page="legal-terms">T&amp;C</a>
+          <a href="#" data-footer-page="legal-cookies">Cookies Consent</a>
+          <a href="#" data-footer-page="legal-privacy">Privacy and GDPR</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Gabriel Services</span>
+        <span>Operational support with clarity, rhythm, and follow-through.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="scripts/app.js"></script>
+</body>
+</html>

@@ -187,7 +187,7 @@
     }
 
     .brand strong {
-      color: var(--text-strong);
+      color: #fff;
       font-size: 1rem;
       font-weight: 950;
       letter-spacing: -0.04em;
@@ -230,13 +230,13 @@
     .nav-btn:hover,
     .ui-toggle:hover,
     .theme-toggle:hover {
-      color: var(--text-strong);
+      color: #fff;
       border-color: var(--line-strong);
       transform: translateY(-1px);
     }
 
     .nav-btn.is-active {
-      color: var(--text-strong);
+      color: #fff;
       border-color: var(--line-strong);
       background:
         linear-gradient(135deg, var(--purple-soft), var(--gold-soft)),
@@ -275,7 +275,7 @@
     h1 {
       max-width: 12ch;
       margin: 0;
-      color: var(--text-strong);
+      color: #fff;
       font-size: clamp(3rem, 8.4vw, 6.7rem);
       line-height: 0.92;
       letter-spacing: -0.08em;
@@ -283,7 +283,7 @@
 
     h2 {
       margin: 0;
-      color: var(--text-strong);
+      color: #fff;
       font-size: clamp(2rem, 4.5vw, 4.1rem);
       line-height: 0.98;
       letter-spacing: -0.065em;
@@ -291,7 +291,7 @@
 
     h3 {
       margin: 0;
-      color: var(--text-strong);
+      color: #fff;
       font-size: 1.18rem;
       letter-spacing: -0.03em;
     }
@@ -413,7 +413,7 @@
     }
 
     .panel-title {
-      color: var(--text-strong);
+      color: #fff;
       font-size: 1.7rem;
       line-height: 1.05;
       letter-spacing: -0.05em;
@@ -509,7 +509,7 @@
 
     .service-title {
       margin: 0;
-      color: var(--text-strong);
+      color: #fff;
       font-size: 1.28rem;
       letter-spacing: -0.03em;
     }
@@ -615,7 +615,7 @@
 
     label,
     legend {
-      color: var(--text-strong);
+      color: #fff;
       font-size: 0.92rem;
       font-weight: 900;
     }
@@ -704,9 +704,13 @@
 
     .site-footer {
       margin-top: clamp(60px, 8vw, 110px);
-      border-top: 1px solid var(--line);
+      border-top: 1px solid #1f1f1f;
       padding-top: clamp(28px, 4vw, 46px);
-      color: var(--muted);
+      background: #000;
+      color: #fff;
+      padding-inline: clamp(16px, 3vw, 28px);
+      padding-bottom: 20px;
+      border-radius: 18px 18px 0 0;
     }
 
     .footer-grid {
@@ -724,20 +728,20 @@
 
     .footer-brand strong,
     .footer-col strong {
-      color: var(--text-strong);
+      color: #fff;
       font-weight: 950;
       letter-spacing: -0.03em;
     }
 
     .footer-brand p {
       max-width: 36ch;
-      color: var(--muted);
+      color: #fff;
       margin: 0;
       line-height: 1.6;
     }
 
     .footer-col a {
-      color: var(--muted);
+      color: #fff;
       text-decoration: none;
       font-weight: 760;
       line-height: 1.35;
@@ -747,7 +751,7 @@
     }
 
     .footer-col a:hover {
-      color: var(--text-strong);
+      color: #fff;
       transform: translateX(4px);
     }
 
@@ -757,9 +761,9 @@
       gap: 16px;
       flex-wrap: wrap;
       margin-top: clamp(28px, 4vw, 44px);
-      border-top: 1px solid var(--line);
+      border-top: 1px solid #1f1f1f;
       padding-top: 18px;
-      color: var(--muted);
+      color: #fff;
       font-size: 0.92rem;
     }
 
@@ -863,12 +867,7 @@
         <button class="nav-btn is-active" data-page="home">Home</button>
         <button class="nav-btn" data-page="contact">Contact</button>
         <button class="nav-btn" data-page="careers">Careers</button>
-        <button class="nav-btn" data-page="services-it">IT</button>
-        <button class="nav-btn" data-page="services-admin">Admin</button>
-        <button class="nav-btn" data-page="services-customer">Customer</button>
-        <button class="nav-btn" data-page="services-logistics">Logistics</button>
-        <button class="nav-btn" data-page="learning-it">Learning</button>
-        <button class="nav-btn" data-page="legal-terms">Legal</button>
+        <button class="nav-btn" data-page="services-index">Services</button>
       </nav>
 
       <div class="tools" aria-label="Display controls">
@@ -891,7 +890,7 @@
         <div class="footer-col">
           <strong>Company</strong>
           <a href="#" data-footer-page="home">Home</a>
-          <a href="#" data-footer-page="services-it">Services</a>
+          <a href="#" data-footer-page="services-index">Services</a>
           <a href="#" data-footer-page="careers">Careers</a>
         </div>
 

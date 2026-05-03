@@ -3,6 +3,7 @@ import { renderForm } from "./pages/form.js";
 import { renderService } from "./pages/service.js";
 import { renderLearning } from "./pages/learning.js";
 import { renderLegal } from "./pages/legal.js";
+import { renderServicesHub } from "./pages/servicesHub.js";
 
     const CONTENT = {
       en: {
@@ -119,6 +120,19 @@ import { renderLegal } from "./pages/legal.js";
           servicesLegend: "Area of interest",
           servicesHelp:
             "Select one or more service areas: Logistics, Admin, Customer Relations, and IT Support."
+        },
+
+        servicesHub: {
+          type: "servicesHub",
+          eyebrow: "Services",
+          title: "Choose a service lane",
+          lead: "Select IT, Admin, Customer, or Logistics to view the full service page.",
+          links: [
+            { label: "IT", page: "services-it" },
+            { label: "Admin", page: "services-admin" },
+            { label: "Customer", page: "services-customer" },
+            { label: "Logistics", page: "services-logistics" }
+          ]
         },
 
         services: {
@@ -440,6 +454,19 @@ import { renderLegal } from "./pages/legal.js";
             "Seleccione una o más áreas: Logística, Administración, Relaciones con clientes y Soporte de TI."
         },
 
+        servicesHub: {
+          type: "servicesHub",
+          eyebrow: "Servicios",
+          title: "Elige un frente de servicio",
+          lead: "Selecciona TI, Administración, Clientes o Logística para ver la página completa del servicio.",
+          links: [
+            { label: "TI", page: "services-it" },
+            { label: "Admin", page: "services-admin" },
+            { label: "Clientes", page: "services-customer" },
+            { label: "Logística", page: "services-logistics" }
+          ]
+        },
+
         services: {
           logistics: {
             type: "service",
@@ -696,6 +723,7 @@ import { renderLegal } from "./pages/legal.js";
       if (pageKey === "home") return data.home;
       if (pageKey === "contact") return data.contact;
       if (pageKey === "careers") return data.careers;
+      if (pageKey === "services-index") return data.servicesHub;
 
       if (pageKey.startsWith("services-")) {
         return data.services[SERVICE_KEYS[pageKey]];
@@ -720,6 +748,7 @@ import { renderLegal } from "./pages/legal.js";
       if (page.type === "service") app.innerHTML = renderService(page);
       if (page.type === "learning") app.innerHTML = renderLearning(page);
       if (page.type === "legal") app.innerHTML = renderLegal(page);
+      if (page.type === "servicesHub") app.innerHTML = renderServicesHub(page);
 
       document.querySelectorAll(".nav-btn").forEach((button) => {
         button.classList.toggle("is-active", button.dataset.page === activePage);

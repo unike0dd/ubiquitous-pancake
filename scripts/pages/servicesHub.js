@@ -7,7 +7,8 @@ export function renderServicesHub(page) {
       <div class="chip-row">
         ${page.links
           .map(
-            (link) => `<button class="chip" type="button" data-page="${link.page}">${link.label}</button>`
+            (link) =>
+              `<button class="chip" type="button" data-page="${link.page}">${link.label}</button>`,
           )
           .join("")}
       </div>

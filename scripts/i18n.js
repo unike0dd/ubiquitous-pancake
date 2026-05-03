@@ -24,11 +24,8 @@
       "Service lane": "Service lane",
       "Learning track": "Learning track",
       "Tell us what support you need.": "Tell us what support you need.",
-      "Build your candidate profile.": "Build your candidate profile.",
       "Share service needs and preferred contact window.":
         "Share service needs and preferred contact window.",
-      "Share availability, service area, and experience.":
-        "Share availability, service area, and experience.",
       "Submit request": "Submit request",
       "Submit application": "Submit application",
       Light: "Light",
@@ -126,7 +123,6 @@
     const existing = new Set(
       Array.from(nav.querySelectorAll("a")).map((a) => a.getAttribute("href")),
     );
-
     footerLinks.forEach((link) => {
       const href = link.getAttribute("href");
       if (!href || existing.has(href)) return;
@@ -160,33 +156,6 @@
         if (!el.dataset.i18nBase) el.dataset.i18nBase = source;
         if (map[source]) el.textContent = map[source];
       });
-  }
-
-  function translatePlaceholders(lang) {
-    const map = placeholderDictionary[lang] || placeholderDictionary.en;
-
-    document
-      .querySelectorAll("input[placeholder], textarea[placeholder]")
-      .forEach((el) => {
-        const source = (
-          el.dataset.i18nPlaceholderBase ||
-          el.getAttribute("placeholder") ||
-          ""
-        ).trim();
-        if (!source) return;
-        if (!el.dataset.i18nPlaceholderBase) {
-          el.dataset.i18nPlaceholderBase = source;
-        }
-        if (map[source]) {
-          el.setAttribute("placeholder", map[source]);
-        }
-      });
-  }
-
-  function translatePage(lang) {
-    document.documentElement.lang = lang;
-    translateTextNodes(lang);
-    translatePlaceholders(lang);
 
     const enBtn = document.getElementById("langEN");
     const esBtn = document.getElementById("langES");

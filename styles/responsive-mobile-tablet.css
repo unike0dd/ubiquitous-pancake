@@ -1,31 +1,44 @@
 @media (max-width: 1023px) {
-  .page {
-    width: min(100% - 24px, 100%);
-    padding: 14px 0 40px !important;
-  }
+  .page { width: min(100% - 24px, 100%); padding: 14px 0 40px !important; }
+
+  /* Force one-column layout on load for mobile and tablet screens. */
   .site-header {
     border-radius: 20px !important;
     padding: 10px 12px !important;
+    flex-direction: column;
+    align-items: stretch !important;
   }
-  .site-nav {
+
+  .site-nav,
+  .tools {
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
   }
+
   .nav-btn,
   .ui-toggle,
   .theme-toggle {
     min-height: 40px;
+    width: 100%;
     padding: 8px 12px !important;
   }
-  .section {
-    padding: 18px !important;
-    border-radius: 14px !important;
-  }
-  .cards {
+
+  .section { padding: 18px !important; border-radius: 14px !important; }
+
+  /* Generic content grids collapse to single column on initial render. */
+  .cards,
+  .grid,
+  .hero,
+  .split,
+  .sample-grid,
+  .form-grid,
+  .footer-grid,
+  .check-grid,
+  .service-card {
     grid-template-columns: 1fr !important;
   }
-  .grid {
-    grid-template-columns: 1fr !important;
-  }
+
   input,
   select,
   textarea,

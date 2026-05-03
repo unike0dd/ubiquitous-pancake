@@ -20,6 +20,9 @@
       Customer: "Customer",
       Logistics: "Logistics",
       "Service inquiry": "Service inquiry",
+      "Candidate intake": "Candidate intake",
+      "Service lane": "Service lane",
+      "Learning track": "Learning track",
       "Tell us what support you need.": "Tell us what support you need.",
       "Share service needs and preferred contact window.":
         "Share service needs and preferred contact window.",
@@ -27,6 +30,12 @@
       "Submit application": "Submit application",
       Light: "Light",
       Dark: "Dark",
+      "About Gabriel Services": "About Gabriel Services",
+      "We provide process-driven support across logistics, administrative back office, customer relations, and IT support.":
+        "We provide process-driven support across logistics, administrative back office, customer relations, and IT support.",
+      "Explore detailed service lanes in the Services section below.":
+        "Explore detailed service lanes in the Services section below.",
+      "Outstanding Operational Support": "Outstanding Operational Support",
     },
     es: {
       Home: "Inicio",
@@ -40,19 +49,47 @@
       Cookies: "Cookies",
       Privacy: "Privacidad",
       "Legal Terms": "Términos legales",
-      "Privacy & GDPR": "Privacidad y GDPR",
+      "Privacy & GDPR": "Privacidad y RGPD",
       IT: "TI",
       Admin: "Administración",
       Customer: "Clientes",
       Logistics: "Logística",
       "Service inquiry": "Consulta de servicio",
-      "Tell us what support you need.": "Cuéntanos qué soporte necesitas.",
+      "Candidate intake": "Registro de candidatos",
+      "Service lane": "Línea de servicio",
+      "Learning track": "Ruta de aprendizaje",
+      "Tell us what support you need.":
+        "Cuéntanos qué tipo de soporte necesitas.",
+      "Build your candidate profile.": "Crea tu perfil de candidatura.",
       "Share service needs and preferred contact window.":
-        "Comparte tus necesidades y horario preferido de contacto.",
+        "Comparte tus necesidades de servicio y tu horario preferido de contacto.",
+      "Share availability, service area, and experience.":
+        "Comparte tu disponibilidad, área de servicio y experiencia.",
       "Submit request": "Enviar solicitud",
       "Submit application": "Enviar candidatura",
       Light: "Claro",
       Dark: "Oscuro",
+      "About Gabriel Services": "Sobre Gabriel Services",
+      "We provide process-driven support across logistics, administrative back office, customer relations, and IT support.":
+        "Brindamos soporte basado en procesos en logística, back office administrativo, atención al cliente y soporte de TI.",
+      "Explore detailed service lanes in the Services section below.":
+        "Explora las líneas de servicio detalladas en la sección de Servicios a continuación.",
+      "Outstanding Operational Support": "Soporte operativo excepcional",
+    },
+  };
+
+  const placeholderDictionary = {
+    en: {
+      "Full Name*": "Full Name*",
+      "Email*": "Email*",
+      "Message*": "Message*",
+      "Career Summary*": "Career Summary*",
+    },
+    es: {
+      "Full Name*": "Nombre completo*",
+      "Email*": "Correo electrónico*",
+      "Message*": "Mensaje*",
+      "Career Summary*": "Resumen profesional*",
     },
   };
 
@@ -108,9 +145,8 @@
     }
   }
 
-  function translatePage(lang) {
+  function translateTextNodes(lang) {
     const map = dictionary[lang] || dictionary.en;
-    document.documentElement.lang = lang;
 
     document
       .querySelectorAll("a, button, h1, h2, h3, p, label")

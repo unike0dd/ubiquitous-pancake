@@ -743,7 +743,7 @@ import { renderServicesHub } from "./pages/servicesHub.js";
     function render() {
       const page = getPageData(activePage);
 
-      if (page.type === "home") app.innerHTML = renderHome(page);
+      if (page.type === "home") app.innerHTML = renderHome(page, text);
       if (page.type === "form") app.innerHTML = renderForm(page, text, SERVICES);
       if (page.type === "service") app.innerHTML = renderService(page);
       if (page.type === "learning") app.innerHTML = renderLearning(page);

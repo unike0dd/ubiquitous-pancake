@@ -1,0 +1,6 @@
+Contact: mailto:security@gabrielservices.example
+Expires: 2027-05-04T00:00:00.000Z
+Preferred-Languages: en, es
+Canonical: https://unike0dd.github.io/ubiquitous-pancake/.well-known/security.txt
+Policy: https://unike0dd.github.io/ubiquitous-pancake/legal/privacy-gdpr.html
+Acknowledgments: https://unike0dd.github.io/ubiquitous-pancake/

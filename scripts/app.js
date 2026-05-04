@@ -829,8 +829,6 @@ const fabAction = document.getElementById("fabAction");
 const mobileFloatNav = document.getElementById("mobileFloatNav");
 const mobileServicesToggle = document.getElementById("mobileServicesToggle");
 const mobileServicesMenu = document.getElementById("mobileServicesMenu");
-const mobileLangToggle = document.getElementById("mobileLangToggle");
-const mobileThemeToggle = document.getElementById("mobileThemeToggle");
 const brandTagline = document.getElementById("brandTagline");
 const footerDescription = document.getElementById("footerDescription");
 
@@ -992,9 +990,7 @@ function handleMouseMove(event) {
   html.style.setProperty("--mouse-y", event.clientY + "px");
 
   if (html.dataset.theme !== "dark") return;
-
   body.classList.add("mouse-active");
-
   window.clearTimeout(handleMouseMove.timer);
   handleMouseMove.timer = window.setTimeout(() => {
     body.classList.remove("mouse-active");
@@ -1004,8 +1000,6 @@ function handleMouseMove(event) {
 langToggle.addEventListener("click", toggleLang);
 themeToggle.addEventListener("click", toggleTheme);
 mobileServicesToggle?.addEventListener("click", toggleMobileServicesMenu);
-mobileLangToggle?.addEventListener("click", toggleLang);
-mobileThemeToggle?.addEventListener("click", toggleTheme);
 fabAction?.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
@@ -1020,22 +1014,10 @@ document.querySelectorAll("[data-footer-page]").forEach((link) => {
 });
 
 window.addEventListener("mousemove", handleMouseMove, { passive: true });
-
 window.addEventListener("mouseleave", () => {
   body.classList.remove("mouse-active");
 });
 
 window.addEventListener("resize", setupMobileNav, { passive: true });
-
-window.addEventListener("click", (event) => {
-  if (!mobileServicesMenu || mobileServicesMenu.hidden) return;
-  const insideMenu = event.target.closest("#mobileServicesMenu");
-  const insideToggle = event.target.closest("#mobileServicesToggle");
-  if (!insideMenu && !insideToggle) {
-    mobileServicesMenu.hidden = true;
-    mobileServicesToggle?.setAttribute("aria-expanded", "false");
-  }
-});
-
 setupMobileNav();
 render();

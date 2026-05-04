@@ -36,6 +36,12 @@
       "Explore detailed service lanes in the Services section below.":
         "Explore detailed service lanes in the Services section below.",
       "Outstanding Operational Support": "Outstanding Operational Support",
+      Sitemap: "Sitemap",
+      "T&C": "T&C",
+      "Cookies Consent": "Cookies Consent",
+      "Privacy and GDPR": "Privacy and GDPR",
+      "© 2026 Gabriel Services · Outstanding Operational Support":
+        "© 2026 Gabriel Services · Outstanding Operational Support",
     },
     es: {
       Home: "Inicio",
@@ -75,6 +81,12 @@
       "Explore detailed service lanes in the Services section below.":
         "Explora las líneas de servicio detalladas en la sección de Servicios a continuación.",
       "Outstanding Operational Support": "Soporte operativo excepcional",
+      Sitemap: "Mapa del sitio",
+      "T&C": "Términos y condiciones",
+      "Cookies Consent": "Consentimiento de cookies",
+      "Privacy and GDPR": "Privacidad y RGPD",
+      "© 2026 Gabriel Services · Outstanding Operational Support":
+        "© 2026 Gabriel Services · Soporte operativo excepcional",
     },
   };
 
@@ -101,7 +113,7 @@
     const map = dictionary[lang] || dictionary.en;
 
     document
-      .querySelectorAll("a, button, h1, h2, h3, p, label")
+      .querySelectorAll("a, button, h1, h2, h3, p, label, footer, span, strong")
       .forEach((el) => {
         const source = (el.dataset.i18nBase || el.textContent || "").trim();
         if (!source) return;

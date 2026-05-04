@@ -846,8 +846,9 @@ function setShell() {
   brandTagline.textContent = shell.brandTagline;
   footerDescription.textContent = shell.footerDescription;
   langToggle.textContent = shell.langNext;
-  themeToggle.textContent =
-    html.dataset.theme === "dark" ? shell.themeLight : shell.themeDark;
+  themeToggle.textContent = html.dataset.theme === "dark" ? shell.themeLight : shell.themeDark;
+  if (mobileLangToggle) mobileLangToggle.textContent = shell.langNext;
+  if (mobileThemeToggle) mobileThemeToggle.textContent = html.dataset.theme === "dark" ? shell.themeLight : shell.themeDark;
   html.lang = activeLang;
 }
 
@@ -989,9 +990,7 @@ function handleMouseMove(event) {
   html.style.setProperty("--mouse-y", event.clientY + "px");
 
   if (html.dataset.theme !== "dark") return;
-
   body.classList.add("mouse-active");
-
   window.clearTimeout(handleMouseMove.timer);
   handleMouseMove.timer = window.setTimeout(() => {
     body.classList.remove("mouse-active");
@@ -1015,12 +1014,10 @@ document.querySelectorAll("[data-footer-page]").forEach((link) => {
 });
 
 window.addEventListener("mousemove", handleMouseMove, { passive: true });
-
 window.addEventListener("mouseleave", () => {
   body.classList.remove("mouse-active");
 });
 
 window.addEventListener("resize", setupMobileNav, { passive: true });
-
 setupMobileNav();
 render();

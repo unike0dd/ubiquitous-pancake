@@ -1007,21 +1007,26 @@
     <button class="fab-action" id="fabAction" type="button" aria-label="Back to top">↑</button>
 
     <nav class="mobile-float-nav" id="mobileFloatNav" aria-label="Mobile navigation" hidden>
-      <button class="mobile-nav-btn" data-page="contact" type="button">Contact</button>
-      <button class="mobile-nav-btn" data-page="careers" type="button">Careers</button>
-      <div class="mobile-services-wrap">
-        <button class="mobile-nav-btn mobile-services-toggle" id="mobileServicesToggle" type="button" aria-expanded="false" aria-controls="mobileServicesMenu">Services</button>
-        <div class="mobile-services-menu" id="mobileServicesMenu" hidden>
-          <button class="mobile-nav-btn" data-page="services-it" type="button">IT Support</button>
-          <button class="mobile-nav-btn" data-page="services-customer" type="button">Customer Relations</button>
-          <button class="mobile-nav-btn" data-page="services-logistics" type="button">Logistics</button>
-          <button class="mobile-nav-btn" data-page="services-admin" type="button">Administrative BackOffice</button>
+      <div class="mobile-nav-main">
+        <button class="mobile-nav-btn" data-page="home" type="button"><span>⌂</span><small>Home</small></button>
+        <button class="mobile-nav-btn" data-page="contact" type="button"><span>✉</span><small>Contact</small></button>
+        <button class="mobile-nav-btn" data-page="careers" type="button"><span>▣</span><small>Careers</small></button>
+        <button class="mobile-nav-btn mobile-services-toggle" id="mobileServicesToggle" type="button" aria-expanded="false" aria-controls="mobileServicesMenu"><span>☰</span><small>Services</small></button>
+      </div>
+      <div class="mobile-nav-tools">
+        <button class="mobile-tool-btn" id="mobileLangToggle" type="button">ES</button>
+        <button class="mobile-tool-btn" id="mobileThemeToggle" type="button">Light</button>
+      </div>
+      <div class="mobile-services-sheet" id="mobileServicesMenu" hidden>
+        <div class="mobile-services-menu-card">
+          <button class="mobile-service-option" data-page="services-it" type="button">IT Support</button>
+          <button class="mobile-service-option" data-page="services-customer" type="button">Customer Relations</button>
+          <button class="mobile-service-option" data-page="services-logistics" type="button">Logistics</button>
+          <button class="mobile-service-option" data-page="services-admin" type="button">Administrative BackOffice</button>
         </div>
       </div>
     </nav>
-
     <script type="module" src="scripts/app.js"></script>
-
     <script src="scripts/i18n.js"></script>
   </body>
 </html>

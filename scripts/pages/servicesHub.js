@@ -5,7 +5,7 @@ export function renderServicesHub(page, text) {
       <h1>${text(page.title)}</h1>
       <p>${text(page.lead)}</p>
       <div class="chip-row">
-        ${page.links
+        ${(page.links || [])
           .map(
             (link) =>
               `<button class="chip" type="button" data-page="${link.page}">${text(link.label)}</button>`,

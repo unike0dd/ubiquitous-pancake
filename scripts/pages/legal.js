@@ -1,5 +1,5 @@
 export function renderLegal(page, text) {
-  const sections = page.sections
+  const sections = (page.sections || [])
     .map(
       ([heading, copy]) =>
         `<article class="legal-item"><h3>${text(heading)}</h3><p>${text(copy)}</p></article>`,

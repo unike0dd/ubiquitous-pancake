@@ -15,6 +15,11 @@
     grid-template-columns: 1fr;
   }
 
+  /* Hide header language/theme controls on tablet/mobile; keep mobile bottom nav controls. */
+  .site-header .tools {
+    display: none !important;
+  }
+
   .nav-btn,
   .ui-toggle,
   .theme-toggle {

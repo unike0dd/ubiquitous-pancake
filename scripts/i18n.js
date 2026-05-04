@@ -24,8 +24,11 @@
       "Service lane": "Service lane",
       "Learning track": "Learning track",
       "Tell us what support you need.": "Tell us what support you need.",
+      "Build your candidate profile.": "Build your candidate profile.",
       "Share service needs and preferred contact window.":
         "Share service needs and preferred contact window.",
+      "Share availability, service area, and experience.":
+        "Share availability, service area, and experience.",
       "Submit request": "Submit request",
       "Submit application": "Submit application",
       Light: "Light",
@@ -38,7 +41,7 @@
       "Outstanding Operational Support": "Outstanding Operational Support",
       Sitemap: "Sitemap",
       "T&C": "T&C",
-      "Cookies Consent": "Cookies Consent",
+      "Cookie Consent": "Cookie Consent",
       "Privacy and GDPR": "Privacy and GDPR",
       "© 2026 Gabriel Services · Outstanding Operational Support":
         "© 2026 Gabriel Services · Outstanding Operational Support",
@@ -83,7 +86,7 @@
       "Outstanding Operational Support": "Soporte operativo excepcional",
       Sitemap: "Mapa del sitio",
       "T&C": "Términos y condiciones",
-      "Cookies Consent": "Consentimiento de cookies",
+      "Cookie Consent": "Consentimiento de cookies",
       "Privacy and GDPR": "Privacidad y RGPD",
       "© 2026 Gabriel Services · Outstanding Operational Support":
         "© 2026 Gabriel Services · Soporte operativo excepcional",

@@ -93,57 +93,9 @@
     },
   };
 
-  function ensureLangToggles() {
-    const host =
-      document.querySelector(".site-nav") ||
-      document.querySelector(".site-header") ||
-      document.body;
-    if (!host) return;
+  function ensureLangToggles() {}
 
-    let wrap = document.getElementById("lang-switch");
-    if (!wrap) {
-      wrap = document.createElement("div");
-      wrap.id = "lang-switch";
-      wrap.className = "tools";
-      wrap.style.display = "inline-flex";
-      wrap.style.gap = "8px";
-      wrap.innerHTML =
-        '<button id="langEN" type="button" class="ui-toggle">EN</button><button id="langES" type="button" class="ui-toggle">ES</button>';
-      host.appendChild(wrap);
-    }
-  }
-
-  function syncNavWithFooter() {
-    const nav = document.querySelector(".site-nav");
-    const footerLinks = Array.from(
-      document.querySelectorAll("footer a, .site-footer a, .footer-links a"),
-    );
-    if (!nav || footerLinks.length === 0) return;
-
-    const existing = new Set(
-      Array.from(nav.querySelectorAll("a")).map((a) => a.getAttribute("href")),
-    );
-    footerLinks.forEach((link) => {
-      const href = link.getAttribute("href");
-      if (!href || existing.has(href)) return;
-
-      const a = document.createElement("a");
-      a.href = href;
-      a.className = link.className || "nav-btn";
-      a.textContent = link.textContent.trim();
-      nav.appendChild(a);
-      existing.add(href);
-    });
-
-    const homeLink = nav.querySelector('a[href="/index.html"], a[href="/"]');
-    if (!homeLink) {
-      const a = document.createElement("a");
-      a.href = "/index.html";
-      a.className = "nav-btn";
-      a.textContent = "Home";
-      nav.prepend(a);
-    }
-  }
+  function syncNavWithFooter() {}
 
   function translateTextNodes(lang) {
     const map = dictionary[lang] || dictionary.en;

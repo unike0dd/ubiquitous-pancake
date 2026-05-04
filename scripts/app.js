@@ -849,8 +849,14 @@ function setShell() {
   footerDescription.textContent = shell.footerDescription;
   langToggle.textContent = shell.langNext;
   themeToggle.textContent = html.dataset.theme === "dark" ? shell.themeLight : shell.themeDark;
-  if (mobileLangToggle) mobileLangToggle.textContent = shell.langNext;
-  if (mobileThemeToggle) mobileThemeToggle.textContent = html.dataset.theme === "dark" ? shell.themeLight : shell.themeDark;
+  if (mobileLangToggle) {
+    const label = mobileLangToggle.querySelector("small");
+    if (label) label.textContent = shell.langNext;
+  }
+  if (mobileThemeToggle) {
+    const label = mobileThemeToggle.querySelector("small");
+    if (label) label.textContent = html.dataset.theme === "dark" ? shell.themeLight : shell.themeDark;
+  }
   html.lang = activeLang;
 }
 
@@ -1002,8 +1008,18 @@ function handleMouseMove(event) {
 langToggle.addEventListener("click", toggleLang);
 themeToggle.addEventListener("click", toggleTheme);
 mobileServicesToggle?.addEventListener("click", toggleMobileServicesMenu);
-fabAction?.addEventListener("click", () => {
+mobileLangToggle?.addEventListener("click", toggleLang);
+mobileThemeToggle?.addEventListener("click", toggleTheme);
+
+function openChatbot() {
+  activePage = "contact";
+  render();
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+fabAction?.addEventListener("click", openChatbot);
+document.querySelectorAll(".mobile-chat-fab").forEach((button) => {
+  button.addEventListener("click", openChatbot);
 });
 
 document.querySelectorAll("[data-footer-page]").forEach((link) => {

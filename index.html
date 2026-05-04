@@ -190,6 +190,24 @@
         font: inherit;
       }
 
+      .skip-link {
+        position: absolute;
+        left: 12px;
+        top: -52px;
+        z-index: 5000;
+        border-radius: 999px;
+        background: #ffffff;
+        color: #111827;
+        padding: 10px 14px;
+        font-weight: 800;
+        text-decoration: none;
+        transition: top var(--ease);
+      }
+
+      .skip-link:focus-visible {
+        top: 10px;
+      }
+
       .page {
         position: relative;
         z-index: 1;
@@ -199,6 +217,9 @@
       }
 
       .site-header {
+        position: sticky;
+        top: 12px;
+        z-index: 90;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -293,6 +314,17 @@
         background:
           linear-gradient(135deg, var(--purple-soft), var(--gold-soft)),
           var(--surface-strong);
+      }
+
+
+      .nav-btn:focus-visible,
+      .ui-toggle:focus-visible,
+      .theme-toggle:focus-visible,
+      .btn:focus-visible,
+      .service-card:focus-visible,
+      .fab-action:focus-visible {
+        outline: 3px solid rgba(231, 201, 120, 0.5);
+        outline-offset: 2px;
       }
 
       .tools {
@@ -945,6 +977,14 @@
         }
       }
 
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
       @media (hover: none), (pointer: coarse) {
         body.theme-dark::after {
           display: none;
@@ -957,6 +997,7 @@
   </head>
 
   <body class="theme-dark">
+    <a class="skip-link" href="#app">Skip to main content</a>
     <div class="page">
       <header class="site-header">
         <a class="brand" href="/index.html" data-page="home" aria-label="Gabriel Services home">

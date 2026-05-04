@@ -110,7 +110,17 @@
 
   function ensureLangToggles() {}
 
-  function syncNavWithFooter() {}
+  function syncNavWithFooter() {
+    const nav = document.querySelector('.site-nav');
+    if (!nav) return;
+    const existingHome = nav.querySelector('[data-page="home"]');
+    if (existingHome) return;
+    const homeBtn = document.createElement('button');
+    homeBtn.className = 'nav-btn';
+    homeBtn.setAttribute('data-page', 'home');
+    homeBtn.textContent = 'Home';
+    nav.insertBefore(homeBtn, nav.firstChild);
+  }
 
   function translateTextNodes(lang) {
     const map = dictionary[lang] || dictionary.en;

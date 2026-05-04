@@ -1,8 +1,8 @@
 export function renderForm(page, text, services) {
   const serviceOptions = (services || [])
     .map(
-      (service) =>
-        `<label class="check"><input type="checkbox" name="service" /><span>${text(service)}</span></label>`,
+      (service, index) =>
+        `<div class="check"><input type="checkbox" name="service" value="${text(service)}" id="service-${index}" /><label for="service-${index}"><span>${text(service)}</span></label></div>`,
     )
     .join("");
   const fields = (page.fields || [])

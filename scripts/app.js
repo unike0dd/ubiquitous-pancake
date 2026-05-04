@@ -817,6 +817,29 @@ const LEGAL_KEYS = {
   "legal-privacy": "privacy",
 };
 
+const cookieConsent = document.getElementById("cookieConsent");
+const acceptCookies = document.getElementById("acceptCookies");
+const rejectCookies = document.getElementById("rejectCookies");
+
+function showCookieConsent() {
+  if (!localStorage.getItem("cookieConsent")) {
+    cookieConsent.hidden = false;
+  }
+}
+
+function acceptCookieConsent() {
+  localStorage.setItem("cookieConsent", "accepted");
+  cookieConsent.hidden = true;
+}
+
+function rejectCookieConsent() {
+  localStorage.setItem("cookieConsent", "rejected");
+  cookieConsent.hidden = true;
+}
+
+acceptCookies?.addEventListener("click", acceptCookieConsent);
+rejectCookies?.addEventListener("click", rejectCookieConsent);
+
 let activeLang = "en";
 let activePage = "home";
 
@@ -1036,3 +1059,4 @@ window.addEventListener("mouseleave", () => {
 window.addEventListener("resize", setupMobileNav, { passive: true });
 setupMobileNav();
 render();
+showCookieConsent();

@@ -1,5 +1,5 @@
 export function renderHome(page, text) {
-  const services = page.services
+  const services = (page.services || [])
     .map(
       (service, index) => `
     <button class="service-card reveal" type="button" data-page="${text(service.key)}">
@@ -9,7 +9,7 @@ export function renderHome(page, text) {
     </button>`,
     )
     .join("");
-  const metrics = page.metrics
+  const metrics = (page.metrics || [])
     .map(
       ([label, copy]) =>
         `<div class="metric"><strong>${text(label)}</strong><span>${text(copy)}</span></div>`,

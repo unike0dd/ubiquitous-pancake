@@ -1,5 +1,5 @@
 export function renderLearning(page, text) {
-  const modules = page.modules
+  const modules = (page.modules || [])
     .map(
       (module, index) =>
         `<article class="sample-card"><div class="number">Track ${String(index + 1).padStart(2, "0")}</div><h3>${text(module)}</h3><p>Visitor-friendly explanation designed to help the user compare fit before requesting service coverage.</p></article>`,

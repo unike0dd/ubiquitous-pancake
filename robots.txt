@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://unike0dd.github.io/ubiquitous-pancake/sitemap.xml

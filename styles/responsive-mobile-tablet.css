@@ -75,18 +75,6 @@
 
   .mobile-nav-btn.is-active small { color: #1e417a; }
 
-  .mobile-chat-fab {
-    position: absolute;
-    right: 6px;
-    top: -38px;
-    width: 36px;
-    height: 36px;
-    border-radius: 999px;
-    border: 0;
-    background: linear-gradient(140deg, #224c88, #1b355f);
-    color: #fff;
-    box-shadow: 0 8px 18px rgba(10, 27, 61, 0.45);
-  }
 
   .mobile-services-sheet {
     position: absolute;

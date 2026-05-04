@@ -1018,9 +1018,6 @@ function openChatbot() {
 }
 
 fabAction?.addEventListener("click", openChatbot);
-document.querySelectorAll(".mobile-chat-fab").forEach((button) => {
-  button.addEventListener("click", openChatbot);
-});
 
 document.querySelectorAll("[data-footer-page]").forEach((link) => {
   link.addEventListener("click", (event) => {

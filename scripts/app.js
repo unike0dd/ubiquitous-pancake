@@ -849,8 +849,14 @@ function setShell() {
   footerDescription.textContent = shell.footerDescription;
   langToggle.textContent = shell.langNext;
   themeToggle.textContent = html.dataset.theme === "dark" ? shell.themeLight : shell.themeDark;
-  if (mobileLangToggle) mobileLangToggle.textContent = shell.langNext;
-  if (mobileThemeToggle) mobileThemeToggle.textContent = html.dataset.theme === "dark" ? shell.themeLight : shell.themeDark;
+  if (mobileLangToggle) {
+    const label = mobileLangToggle.querySelector("small");
+    if (label) label.textContent = shell.langNext;
+  }
+  if (mobileThemeToggle) {
+    const label = mobileThemeToggle.querySelector("small");
+    if (label) label.textContent = html.dataset.theme === "dark" ? shell.themeLight : shell.themeDark;
+  }
   html.lang = activeLang;
 }
 
@@ -1003,6 +1009,7 @@ langToggle.addEventListener("click", toggleLang);
 themeToggle.addEventListener("click", toggleTheme);
 mobileServicesToggle?.addEventListener("click", toggleMobileServicesMenu);
 mobileLangToggle?.addEventListener("click", toggleLang);
+mobileThemeToggle?.addEventListener("click", toggleTheme);
 
 function openChatbot() {
   activePage = "contact";

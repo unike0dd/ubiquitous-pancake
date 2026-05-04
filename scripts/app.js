@@ -1002,8 +1002,17 @@ function handleMouseMove(event) {
 langToggle.addEventListener("click", toggleLang);
 themeToggle.addEventListener("click", toggleTheme);
 mobileServicesToggle?.addEventListener("click", toggleMobileServicesMenu);
-fabAction?.addEventListener("click", () => {
+mobileLangToggle?.addEventListener("click", toggleLang);
+
+function openChatbot() {
+  activePage = "contact";
+  render();
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+fabAction?.addEventListener("click", openChatbot);
+document.querySelectorAll(".mobile-chat-fab").forEach((button) => {
+  button.addEventListener("click", openChatbot);
 });
 
 document.querySelectorAll("[data-footer-page]").forEach((link) => {

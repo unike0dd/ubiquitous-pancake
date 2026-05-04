@@ -873,11 +873,11 @@ function getPageData(pageKey) {
 function render() {
   const page = getPageData(activePage);
 
-  if (page.type === "home") app.innerHTML = renderHome(page);
+  if (page.type === "home") app.innerHTML = renderHome(page, text);
   if (page.type === "form") app.innerHTML = renderForm(page, text, SERVICES);
-  if (page.type === "service") app.innerHTML = renderService(page);
-  if (page.type === "learning") app.innerHTML = renderLearning(page);
-  if (page.type === "legal") app.innerHTML = renderLegal(page);
+  if (page.type === "service") app.innerHTML = renderService(page, text);
+  if (page.type === "learning") app.innerHTML = renderLearning(page, text);
+  if (page.type === "legal") app.innerHTML = renderLegal(page, text);
   if (page.type === "servicesHub") app.innerHTML = renderServicesHub(page);
 
   document.querySelectorAll(".nav-btn").forEach((button) => {
@@ -891,7 +891,8 @@ function render() {
 
 function bindPageButtons() {
   document.querySelectorAll("[data-page]").forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (event) => {
+      if (button.tagName === "A") event.preventDefault();
       activePage = button.dataset.page;
       render();
       window.scrollTo({ top: 0, behavior: "smooth" });

@@ -332,7 +332,7 @@ const CONTENT = {
       cookies: {
         type: "legal",
         eyebrow: "Legal",
-        title: "Cookies Consent",
+        title: "Cookie Consent",
         effective: "Effective date: March 18, 2026",
         intro:
           "This sample cookies page explains what cookies are, how preferences work, and how visitors may manage optional technologies.",

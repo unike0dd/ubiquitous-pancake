@@ -1006,6 +1006,20 @@
     </div>
     <button class="fab-action" id="fabAction" type="button" aria-label="Back to top">↑</button>
 
+    <nav class="mobile-float-nav" id="mobileFloatNav" aria-label="Mobile navigation" hidden>
+      <button class="mobile-nav-btn" data-page="contact" type="button">Contact</button>
+      <button class="mobile-nav-btn" data-page="careers" type="button">Careers</button>
+      <div class="mobile-services-wrap">
+        <button class="mobile-nav-btn mobile-services-toggle" id="mobileServicesToggle" type="button" aria-expanded="false" aria-controls="mobileServicesMenu">Services</button>
+        <div class="mobile-services-menu" id="mobileServicesMenu" hidden>
+          <button class="mobile-nav-btn" data-page="services-it" type="button">IT Support</button>
+          <button class="mobile-nav-btn" data-page="services-customer" type="button">Customer Relations</button>
+          <button class="mobile-nav-btn" data-page="services-logistics" type="button">Logistics</button>
+          <button class="mobile-nav-btn" data-page="services-admin" type="button">Administrative BackOffice</button>
+        </div>
+      </div>
+    </nav>
+
     <script type="module" src="scripts/app.js"></script>
 
     <script src="scripts/i18n.js"></script>

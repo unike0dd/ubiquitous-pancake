@@ -829,6 +829,8 @@ const fabAction = document.getElementById("fabAction");
 const mobileFloatNav = document.getElementById("mobileFloatNav");
 const mobileServicesToggle = document.getElementById("mobileServicesToggle");
 const mobileServicesMenu = document.getElementById("mobileServicesMenu");
+const mobileLangToggle = document.getElementById("mobileLangToggle");
+const mobileThemeToggle = document.getElementById("mobileThemeToggle");
 const brandTagline = document.getElementById("brandTagline");
 const footerDescription = document.getElementById("footerDescription");
 

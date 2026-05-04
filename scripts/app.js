@@ -825,6 +825,7 @@ const html = document.documentElement;
 const body = document.body;
 const langToggle = document.getElementById("langToggle");
 const themeToggle = document.getElementById("themeToggle");
+const fabAction = document.getElementById("fabAction");
 const brandTagline = document.getElementById("brandTagline");
 const footerDescription = document.getElementById("footerDescription");
 
@@ -972,6 +973,9 @@ function handleMouseMove(event) {
 
 langToggle.addEventListener("click", toggleLang);
 themeToggle.addEventListener("click", toggleTheme);
+fabAction?.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
 document.querySelectorAll("[data-footer-page]").forEach((link) => {
   link.addEventListener("click", (event) => {

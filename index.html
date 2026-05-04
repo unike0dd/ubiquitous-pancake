@@ -226,6 +226,26 @@
         flex-wrap: wrap;
       }
 
+      .fab-action {
+        position: fixed;
+        right: 15px;
+        bottom: 20px;
+        z-index: 3001;
+        width: 56px;
+        height: 56px;
+        border: 1px solid var(--line-strong);
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--purple), var(--purple-deep));
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 900;
+        box-shadow: var(--shadow-soft);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+
       .nav-btn,
       .ui-toggle,
       .theme-toggle {
@@ -875,6 +895,40 @@
         .check-grid {
           grid-template-columns: 1fr;
         }
+
+        .site-nav {
+          position: fixed;
+          left: 12px;
+          right: 12px;
+          bottom: 12px;
+          z-index: 3000;
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 8px;
+          padding: 10px;
+          border: 1px solid var(--line);
+          border-radius: 18px;
+          background: var(--surface-strong);
+          box-shadow: var(--shadow-soft);
+          backdrop-filter: blur(18px);
+        }
+
+        .site-nav .nav-btn {
+          width: 100%;
+          min-height: 44px;
+          padding: 10px 8px;
+          font-size: 0.78rem;
+          text-align: center;
+        }
+
+        .fab-action {
+          display: inline-flex;
+          bottom: 94px;
+        }
+
+        .page {
+          padding-bottom: 138px;
+        }
       }
 
       @media (hover: none), (pointer: coarse) {
@@ -950,6 +1004,7 @@
         </div>
       </footer>
     </div>
+    <button class="fab-action" id="fabAction" type="button" aria-label="Back to top">↑</button>
 
     <script type="module" src="scripts/app.js"></script>
 

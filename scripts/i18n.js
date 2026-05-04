@@ -117,6 +117,23 @@
     localStorage.setItem(STORAGE_KEY, lang);
   }
 
+
+  function translatePlaceholders(lang) {
+    const map = placeholderDictionary[lang] || placeholderDictionary.en;
+
+    document.querySelectorAll("input[placeholder], textarea[placeholder]").forEach((el) => {
+      const source = (el.dataset.i18nPlaceholderBase || el.getAttribute("placeholder") || "").trim();
+      if (!source) return;
+      if (!el.dataset.i18nPlaceholderBase) el.dataset.i18nPlaceholderBase = source;
+      if (map[source]) el.setAttribute("placeholder", map[source]);
+    });
+  }
+
+  function translatePage(lang) {
+    translateTextNodes(lang);
+    translatePlaceholders(lang);
+  }
+
   function setupLanguage() {
     ensureLangToggles();
     const current = localStorage.getItem(STORAGE_KEY) || "en";

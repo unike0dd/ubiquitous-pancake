@@ -878,7 +878,7 @@ function render() {
   if (page.type === "service") app.innerHTML = renderService(page, text);
   if (page.type === "learning") app.innerHTML = renderLearning(page, text);
   if (page.type === "legal") app.innerHTML = renderLegal(page, text);
-  if (page.type === "servicesHub") app.innerHTML = renderServicesHub(page);
+  if (page.type === "servicesHub") app.innerHTML = renderServicesHub(page, text);
 
   document.querySelectorAll(".nav-btn").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.page === activePage);

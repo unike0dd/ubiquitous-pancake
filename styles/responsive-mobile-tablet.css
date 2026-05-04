@@ -48,6 +48,91 @@
 }
 
 @media (max-width: 767px) {
+  .site-header .site-nav {
+    display: none !important;
+  }
+
+  .mobile-float-nav {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 35;
+    display: grid;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--surface-strong);
+    box-shadow: var(--shadow-soft);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-nav-main { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+
+  .mobile-nav-btn {
+    border: 1px solid transparent;
+    border-radius: 14px;
+    background: transparent;
+    color: var(--muted);
+    padding: 8px 6px;
+    font-size: 0.8rem;
+    display: grid;
+    gap: 4px;
+    place-items: center;
+  }
+
+  .mobile-nav-btn span { color: var(--gold-2); font-weight: 700; }
+  .mobile-nav-btn small { font-size: 0.72rem; }
+
+  .mobile-nav-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+  .mobile-tool-btn {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--gold-soft), rgba(255,255,255,0.04));
+    color: var(--text);
+    min-height: 36px;
+  }
+
+  .mobile-nav-btn.is-active {
+    border-color: var(--line-strong);
+    background: linear-gradient(120deg, var(--purple), var(--purple-deep));
+    color: #fff;
+  }
+
+  .mobile-services-sheet {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 132px;
+    z-index: 40;
+  }
+
+  .mobile-services-menu-card {
+    display: grid;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: var(--surface-strong);
+    box-shadow: var(--shadow-strong);
+  }
+
+  .mobile-service-option {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+    padding: 10px 12px;
+    text-align: left;
+  }
+
+  .page {
+    padding-bottom: 122px !important;
+  }
+
   .site-header {
     flex-direction: column;
     align-items: stretch !important;

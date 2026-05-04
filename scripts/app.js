@@ -826,6 +826,11 @@ const body = document.body;
 const langToggle = document.getElementById("langToggle");
 const themeToggle = document.getElementById("themeToggle");
 const fabAction = document.getElementById("fabAction");
+const mobileFloatNav = document.getElementById("mobileFloatNav");
+const mobileServicesToggle = document.getElementById("mobileServicesToggle");
+const mobileServicesMenu = document.getElementById("mobileServicesMenu");
+const mobileLangToggle = document.getElementById("mobileLangToggle");
+const mobileThemeToggle = document.getElementById("mobileThemeToggle");
 const brandTagline = document.getElementById("brandTagline");
 const footerDescription = document.getElementById("footerDescription");
 
@@ -843,8 +848,9 @@ function setShell() {
   brandTagline.textContent = shell.brandTagline;
   footerDescription.textContent = shell.footerDescription;
   langToggle.textContent = shell.langNext;
-  themeToggle.textContent =
-    html.dataset.theme === "dark" ? shell.themeLight : shell.themeDark;
+  themeToggle.textContent = html.dataset.theme === "dark" ? shell.themeLight : shell.themeDark;
+  if (mobileLangToggle) mobileLangToggle.textContent = shell.langNext;
+  if (mobileThemeToggle) mobileThemeToggle.textContent = html.dataset.theme === "dark" ? shell.themeLight : shell.themeDark;
   html.lang = activeLang;
 }
 
@@ -881,7 +887,7 @@ function render() {
   if (page.type === "legal") app.innerHTML = renderLegal(page, text);
   if (page.type === "servicesHub") app.innerHTML = renderServicesHub(page, text);
 
-  document.querySelectorAll(".nav-btn").forEach((button) => {
+  document.querySelectorAll(".nav-btn, .mobile-nav-btn").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.page === activePage);
   });
 
@@ -895,6 +901,10 @@ function bindPageButtons() {
     button.addEventListener("click", (event) => {
       if (button.tagName === "A") event.preventDefault();
       activePage = button.dataset.page;
+      if (mobileServicesMenu && mobileServicesToggle) {
+        mobileServicesMenu.hidden = true;
+        mobileServicesToggle.setAttribute("aria-expanded", "false");
+      }
       render();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
@@ -912,6 +922,26 @@ function bindPageButtons() {
       }
     });
   });
+}
+
+function setupMobileNav() {
+  const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
+  if (!mobileFloatNav) return;
+
+  mobileFloatNav.hidden = !isMobile;
+
+  if (!isMobile && mobileServicesMenu && mobileServicesToggle) {
+    mobileServicesMenu.hidden = true;
+    mobileServicesToggle.setAttribute("aria-expanded", "false");
+  }
+}
+
+function toggleMobileServicesMenu() {
+  if (!mobileServicesMenu || !mobileServicesToggle) return;
+  const willExpand = mobileServicesMenu.hidden;
+  mobileServicesMenu.hidden = !willExpand;
+  mobileServicesToggle.setAttribute("aria-expanded", String(willExpand));
 }
 
 function revealItems() {
@@ -973,6 +1003,9 @@ function handleMouseMove(event) {
 
 langToggle.addEventListener("click", toggleLang);
 themeToggle.addEventListener("click", toggleTheme);
+mobileServicesToggle?.addEventListener("click", toggleMobileServicesMenu);
+mobileLangToggle?.addEventListener("click", toggleLang);
+mobileThemeToggle?.addEventListener("click", toggleTheme);
 fabAction?.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
@@ -992,4 +1025,17 @@ window.addEventListener("mouseleave", () => {
   body.classList.remove("mouse-active");
 });
 
+window.addEventListener("resize", setupMobileNav, { passive: true });
+
+window.addEventListener("click", (event) => {
+  if (!mobileServicesMenu || mobileServicesMenu.hidden) return;
+  const insideMenu = event.target.closest("#mobileServicesMenu");
+  const insideToggle = event.target.closest("#mobileServicesToggle");
+  if (!insideMenu && !insideToggle) {
+    mobileServicesMenu.hidden = true;
+    mobileServicesToggle?.setAttribute("aria-expanded", "false");
+  }
+});
+
+setupMobileNav();
 render();

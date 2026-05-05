@@ -36,7 +36,8 @@
 }
 
 @media (max-width: 767px) {
-  .site-header .site-nav { display: none !important; }
+  .site-header .site-nav,
+  .desktop-services-menu { display: none !important; }
 
   .mobile-float-nav {
     position: fixed;

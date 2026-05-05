@@ -843,6 +843,26 @@ rejectCookies?.addEventListener("click", rejectCookieConsent);
 let activeLang = "en";
 let activePage = "home";
 
+// Handle GitHub Pages 404.html redirect for client-side routing
+const params = new URLSearchParams(window.location.search);
+const redirectPath = params.get('redirect');
+if (redirectPath) {
+  const pageMap = {
+    '/home': 'home',
+    '/': 'home',
+    '/careers': 'careers',
+    '/contact': 'contact',
+    '/it-support': 'it-support',
+    '/admin-backoffice': 'admin-backoffice',
+    '/learning': 'learning',
+    '/about': 'about',
+    '/services': 'services',
+  };
+  activePage = pageMap[redirectPath] || 'home';
+  // Clean up the URL
+  window.history.replaceState({}, document.title, window.location.pathname);
+}
+
 const app = document.getElementById("app");
 const html = document.documentElement;
 const body = document.body;

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gabriel Services</title>
+    <script>
+        // Redirect to index.html with the requested path as a query parameter
+        // This allows the SPA to handle client-side routing
+        const currentPath = window.location.pathname;
+        const basePath = '/ubiquitous-pancake';
+        
+        // Extract the route from the pathname
+        const route = currentPath.replace(basePath, '').replace(/\/$/, '') || '/';
+        
+        // Redirect to index.html with the route
+        window.location.replace(basePath + '/?redirect=' + encodeURIComponent(route));
+    </script>
+</head>
+<body>
+    Redirecting...
+</body>
+</html>

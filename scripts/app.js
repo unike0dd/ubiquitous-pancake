@@ -881,6 +881,8 @@ const mobileServicesToggle = document.getElementById("mobileServicesToggle");
 const mobileServicesMenu = document.getElementById("mobileServicesMenu");
 const mobileLangToggle = document.getElementById("mobileLangToggle");
 const mobileThemeToggle = document.getElementById("mobileThemeToggle");
+const desktopServicesToggle = document.getElementById("desktopServicesToggle");
+const desktopServicesMenu = document.getElementById("desktopServicesMenu");
 const brandTagline = document.getElementById("brandTagline");
 const footerDescription = document.getElementById("footerDescription");
 
@@ -1009,6 +1011,13 @@ function toggleMobileServicesMenu() {
   mobileServicesToggle.setAttribute("aria-expanded", String(willExpand));
 }
 
+function toggleDesktopServicesMenu() {
+  if (!desktopServicesMenu || !desktopServicesToggle) return;
+  const willExpand = desktopServicesMenu.hidden;
+  desktopServicesMenu.hidden = !willExpand;
+  desktopServicesToggle.setAttribute("aria-expanded", String(willExpand));
+}
+
 function revealItems() {
   const items = Array.from(document.querySelectorAll(".reveal"));
 
@@ -1067,6 +1076,7 @@ function handleMouseMove(event) {
 langToggle.addEventListener("click", toggleLang);
 themeToggle.addEventListener("click", toggleTheme);
 mobileServicesToggle?.addEventListener("click", toggleMobileServicesMenu);
+desktopServicesToggle?.addEventListener("click", toggleDesktopServicesMenu);
 mobileLangToggle?.addEventListener("click", toggleLang);
 mobileThemeToggle?.addEventListener("click", toggleTheme);
 

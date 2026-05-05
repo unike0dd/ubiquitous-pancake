@@ -34,6 +34,9 @@
   --ease: 180ms ease;
   --max: 1180px;
   --reading: 780px;
+  --space-page-inline: clamp(14px, 2.4vw, 32px);
+  --space-page-block: clamp(16px, 2.2vw, 30px);
+  --tap-target: 44px;
 }
 
 html[data-theme="light"] {
@@ -141,9 +144,9 @@ textarea {
 .page {
   position: relative;
   z-index: 1;
-  width: min(var(--max), calc(100% - 32px));
+  width: min(var(--max), calc(100% - (var(--space-page-inline) * 2)));
   margin: 0 auto;
-  padding: 26px 0 70px;
+  padding: var(--space-page-block) 0 clamp(56px, 8vw, 76px);
 }
 
 .site-header {
@@ -334,7 +337,7 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 50px;
+  min-height: var(--tap-target);
   border-radius: var(--radius-pill);
   padding: 0 22px;
   font-weight: 950;
@@ -621,7 +624,7 @@ input,
 select,
 textarea {
   width: 100%;
-  min-height: 48px;
+  min-height: var(--tap-target);
   border: 1px solid var(--line);
   border-radius: 14px;
   background: var(--surface-strong);
@@ -917,5 +920,28 @@ fieldset {
 @media (hover: none), (pointer: coarse) {
   body.theme-dark::after {
     display: none;
+  }
+}
+
+/* Adaptive viewport polish */
+@media (min-width: 768px) and (max-width: 1180px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(22px, 3vw, 36px);
+  }
+
+  .command-panel {
+    max-width: 760px;
+  }
+
+  .services {
+    gap: 14px;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --max: 1360px;
+    --reading: 860px;
   }
 }

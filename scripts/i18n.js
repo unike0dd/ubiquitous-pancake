@@ -172,7 +172,15 @@
       ?.addEventListener("click", () => translatePage("es"));
   }
 
+
+  function clearTrailingHash() {
+    if (window.location.hash !== "#") return;
+    const cleanUrl = window.location.pathname + window.location.search;
+    history.replaceState(null, "", cleanUrl);
+  }
+
   function init() {
+    clearTrailingHash();
     syncNavWithFooter();
     setupLanguage();
   }

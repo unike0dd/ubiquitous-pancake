@@ -948,7 +948,6 @@ function render() {
 function bindPageButtons() {
   document.querySelectorAll("[data-page]").forEach((button) => {
     button.addEventListener("click", (event) => {
-      if (button.tagName === "A") event.preventDefault();
       activePage = button.dataset.page;
       if (mobileServicesMenu && mobileServicesToggle) {
         mobileServicesMenu.hidden = true;
@@ -1055,19 +1054,19 @@ mobileLangToggle?.addEventListener("click", toggleLang);
 mobileThemeToggle?.addEventListener("click", toggleTheme);
 
 function openChatbot() {
-  activePage = "contact";
-  render();
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.location.href = "/ubiquitous-pancake/contact/";
 }
 
 fabAction?.addEventListener("click", openChatbot);
 
 document.querySelectorAll("[data-footer-page]").forEach((link) => {
   link.addEventListener("click", (event) => {
-    event.preventDefault();
-    activePage = link.dataset.footerPage;
-    render();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (link.tagName !== "A") {
+      event.preventDefault();
+      activePage = link.dataset.footerPage;
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   });
 });
 

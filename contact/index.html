@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -73,8 +73,242 @@
           <button type="button">Submit</button>
           <button type="reset">Clear Form</button>
         </div>
-      </form>
+      </section>
     </div>
-    <script src="/ubiquitous-pancake/scripts/i18n.js"></script>
-  </body>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-column">
+      <h4>Company</h4>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Careers</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Support</h4>
+      <a href="#">Contact</a>
+      <a href="#">Learning</a>
+      <a href="#">Sitemap</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Legal</h4>
+      <a href="#">T&amp;C</a>
+      <a href="#">Cookies Consent</a>
+      <a href="#">Privacy and GDPR</a>
+    </div>
+
+    <p class="footer-copy">© 2026 Gabriel Services</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const form = document.getElementById("contactForm");
+  const status = document.getElementById("formStatus");
+  const clearBtn = document.getElementById("clearFormBtn");
+
+  const groups = [
+    {
+      type: "simple",
+      inputId: "contactRemoteSkillInput",
+      buttonId: "contactRemoteSkillAdd",
+      listId: "contactRemoteSkillsList",
+      hiddenId: "contactRemoteSkillsHidden"
+    },
+    {
+      type: "pair",
+      inputId: "contactExperienceInput",
+      selectId: "contactExperienceLevel",
+      buttonId: "contactExperienceAdd",
+      listId: "contactExperienceList",
+      hiddenId: "contactExperienceHidden"
+    },
+    {
+      type: "pair",
+      inputId: "contactLanguageInput",
+      selectId: "contactLanguageLevel",
+      buttonId: "contactLanguageAdd",
+      listId: "contactLanguagesList",
+      hiddenId: "contactLanguagesHidden"
+    },
+    {
+      type: "pair",
+      inputId: "contactEducationInput",
+      selectId: "contactEducationLevel",
+      buttonId: "contactEducationAdd",
+      listId: "contactEducationList",
+      hiddenId: "contactEducationHidden"
+    }
+  ];
+
+  function getGroupValues(list) {
+    return Array.from(list.querySelectorAll(".pill"))
+      .map(function (pill) {
+        return pill.dataset.value || "";
+      })
+      .filter(Boolean);
+  }
+
+  function syncHidden(list, hidden) {
+    hidden.value = JSON.stringify(getGroupValues(list));
+  }
+
+  function createPill(value, list, hidden) {
+    const li = document.createElement("li");
+    li.className = "pill";
+    li.dataset.value = value;
+
+    const span = document.createElement("span");
+    span.textContent = value;
+
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.textContent = "×";
+    remove.setAttribute("aria-label", "Remove " + value);
+
+    remove.addEventListener("click", function () {
+      li.remove();
+      syncHidden(list, hidden);
+    });
+
+    li.appendChild(span);
+    li.appendChild(remove);
+    list.appendChild(li);
+    syncHidden(list, hidden);
+  }
+
+  function setupDynamicGroup(config) {
+    const input = document.getElementById(config.inputId);
+    const button = document.getElementById(config.buttonId);
+    const list = document.getElementById(config.listId);
+    const hidden = document.getElementById(config.hiddenId);
+    const select = config.selectId ? document.getElementById(config.selectId) : null;
+
+    function addValue() {
+      const text = String(input.value || "").trim();
+      const level = select ? String(select.value || "").trim() : "";
+      let value = "";
+
+      if (config.type === "simple") {
+        value = text;
+      }
+
+      if (config.type === "pair") {
+        if (!text || !level) {
+          status.textContent = "Please add text and select a level before adding.";
+          status.dataset.state = "blocked";
+          return;
+        }
+
+        value = text + " — " + level;
+      }
+
+      if (!value) {
+        status.textContent = "Please type a value before adding.";
+        status.dataset.state = "blocked";
+        return;
+      }
+
+      const existing = getGroupValues(list).map(function (item) {
+        return item.toLowerCase();
+      });
+
+      if (existing.includes(value.toLowerCase())) {
+        status.textContent = "That item is already added.";
+        status.dataset.state = "blocked";
+        return;
+      }
+
+      createPill(value, list, hidden);
+      input.value = "";
+
+      if (select) {
+        select.value = "";
+      }
+
+      status.textContent = "Added: " + value;
+      status.dataset.state = "success";
+      input.focus();
+    }
+
+    button.addEventListener("click", addValue);
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        addValue();
+      }
+    });
+  }
+
+  groups.forEach(setupDynamicGroup);
+
+  function hasChecked(selector) {
+    return Boolean(form.querySelector(selector + ":checked"));
+  }
+
+  clearBtn.addEventListener("click", function () {
+    form.reset();
+
+    groups.forEach(function (config) {
+      const list = document.getElementById(config.listId);
+      const hidden = document.getElementById(config.hiddenId);
+      list.innerHTML = "";
+      hidden.value = "";
+    });
+
+    status.textContent = "Form cleared.";
+    status.dataset.state = "success";
+  });
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const honeypot = document.getElementById("contactCompanyWebsite");
+
+    if (honeypot && honeypot.value.trim()) {
+      status.textContent = "Submission blocked.";
+      status.dataset.state = "blocked";
+      return;
+    }
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      status.textContent = "Please complete all required fields before submitting.";
+      status.dataset.state = "blocked";
+      return;
+    }
+
+    if (!hasChecked('input[name="contact_interest[]"]')) {
+      status.textContent = "Please select at least one service interest.";
+      status.dataset.state = "blocked";
+      return;
+    }
+
+    const data = new FormData(form);
+    const payload = {};
+
+    data.forEach(function (value, key) {
+      if (Object.prototype.hasOwnProperty.call(payload, key)) {
+        payload[key] = Array.isArray(payload[key])
+          ? payload[key].concat(value)
+          : [payload[key], value];
+      } else {
+        payload[key] = value;
+      }
+    });
+
+    console.log("Contact form sample payload:", payload);
+
+    status.textContent = "Sample ready. Payload printed in the browser console. No Worker request was sent.";
+    status.dataset.state = "success";
+  });
+})();
+</script>
+</body>
 </html>

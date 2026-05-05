@@ -1,3 +1,10 @@
+
+function clearTrailingHash() {
+  if (window.location.hash !== "#") return;
+  const cleanUrl = window.location.pathname + window.location.search;
+  history.replaceState(null, "", cleanUrl);
+}
+
 import { renderHome } from "./pages/home.js";
 import { renderForm } from "./pages/form.js";
 import { renderService } from "./pages/service.js";
@@ -972,6 +979,16 @@ function bindPageButtons() {
   });
 }
 
+
+function syncMobileNavActiveState() {
+  if (!mobileFloatNav) return;
+  const current = location.pathname.replace(/\/$/, "");
+  mobileFloatNav.querySelectorAll("a.mobile-nav-btn").forEach((link) => {
+    const href = new URL(link.href, location.origin).pathname.replace(/\/$/, "");
+    link.classList.toggle("is-active", href === current);
+  });
+}
+
 function setupMobileNav() {
   const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
@@ -1076,6 +1093,8 @@ window.addEventListener("mouseleave", () => {
 });
 
 window.addEventListener("resize", setupMobileNav, { passive: true });
+clearTrailingHash();
 setupMobileNav();
+syncMobileNavActiveState();
 render();
 showCookieConsent();

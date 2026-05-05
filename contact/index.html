@@ -1,73 +1,986 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact | Gabriel Services</title>
-    <style>
-      body { font-family: Inter, system-ui, sans-serif; margin: 0; background: #f8fafc; color: #0f172a; }
-      .page { max-width: 980px; margin: 0 auto; padding: 24px; }
-      .site-header { display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center; }
-      .site-nav { display:flex; gap:10px; flex-wrap:wrap; }
-      .site-nav a { color:#0f172a; text-decoration:none; padding:6px 10px; border-radius:8px; }
-      .site-nav a.active { background:#e2e8f0; font-weight:600; }
-      h1 { margin: 18px 0 6px; }
-      .lead { margin:0 0 20px; color:#334155; }
-      form { display:grid; gap:12px; }
-      input, textarea { width:100%; box-sizing:border-box; padding:10px 12px; border:1px solid #cbd5e1; border-radius:8px; font:inherit; }
-      textarea { min-height:120px; resize:vertical; }
-      .btn-row { display:flex; gap:10px; flex-wrap:wrap; }
-      button { padding:10px 14px; border:1px solid #94a3b8; border-radius:8px; background:#fff; cursor:pointer; }
-      h3 { margin-top: 12px; margin-bottom: 0; }
-      .inline-note { color:#475569; font-size:.95rem; }
-    </style>
-      <link rel="stylesheet" href="/ubiquitous-pancake/styles/main.css" />
-      <link rel="stylesheet" href="/ubiquitous-pancake/styles/responsive-desktop.css" />
-      <link rel="stylesheet" href="/ubiquitous-pancake/styles/responsive-mobile-tablet.css" />
-  </head>
-  <body>
-    <div class="page">
-      <header class="site-header">
-        <strong>Gabriel Services</strong>
-        <nav class="site-nav" aria-label="Primary">
-          <a href="/ubiquitous-pancake/about/">About</a>
-          <a href="/ubiquitous-pancake/careers/">Careers</a>
-          <a class="active" href="/ubiquitous-pancake/contact/">Contact</a>
-          <a href="/ubiquitous-pancake/learning/">Learning</a>
-        </nav>
-      </header>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gabriel Services | Contact Form Sample</title>
 
-      <h1>Contact</h1>
-      <p class="lead">Get in touch for support, onboarding, projects, and partnership opportunities.</p>
+<style>
+:root {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --surface-soft: #f2f4f7;
+  --text: #101828;
+  --muted: #475467;
+  --line: #d0d5dd;
+  --line-strong: #98a2b3;
+  --accent: #111111;
+  --success: #067647;
+  --danger: #b42318;
+  --shadow: 0 18px 50px rgba(16, 24, 40, 0.08);
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-md: 14px;
+}
 
-      <form>
-        <input placeholder="Full Name" />
-        <input placeholder="Email Address" />
-        <input placeholder="Country Code" />
-        <input placeholder="Contact Number" />
-        <input placeholder="City" />
-        <input placeholder="State/Province" />
-        <input placeholder="Space/Suite/Apt" />
-        <input placeholder="Country Zip Code" />
-        <input placeholder="Best Time to Contact You" />
-        <textarea placeholder="Message"></textarea>
-        <h3>Inquiry About Remote Assistant</h3>
-        <input placeholder="Skills" />
-        <p class="inline-note">Add + Remove -</p>
-        <input placeholder="Area of Interest" />
-        <p class="inline-note">Add + Remove -</p>
-        <input placeholder="Experience Level" />
-        <p class="inline-note">Add + Remove -</p>
-        <input placeholder="Education" />
-        <p class="inline-note">Add + Remove -</p>
-        <input placeholder="Languages" />
-        <p class="inline-note">Add + Remove -</p>
-        <div class="btn-row">
-          <button type="button">Submit</button>
-          <button type="reset">Clear Form</button>
-        </div>
-      </form>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(17, 17, 17, 0.08), transparent 35%),
+    linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+  color: var(--text);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.site-header {
+  width: 100%;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.container {
+  width: min(100% - 32px, 1120px);
+  margin: 0 auto;
+}
+
+.nav-wrap {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand-stack {
+  display: grid;
+  gap: 3px;
+}
+
+.brand {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-size: 1.1rem;
+}
+
+.brand-subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-weight: 800;
+  font-size: 0.92rem;
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.page-main {
+  padding: 42px 0 70px;
+}
+
+.contact-hub {
+  width: 100%;
+}
+
+.hub-page {
+  width: min(100%, 1040px);
+  margin: 0 auto;
+  display: grid;
+  gap: 28px;
+}
+
+.contact-hero {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 18px 0 4px;
+}
+
+.contact-hero h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 8vw, 5.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.07em;
+}
+
+.hero-shell {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.hero-shell h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+}
+
+.hero-shell p {
+  margin: 0;
+  max-width: 760px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.layout {
+  width: min(100%, 920px);
+  margin: 0 auto;
+}
+
+.panel {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.panel__body {
+  padding: 28px;
+}
+
+.site-form {
+  display: grid;
+  gap: 24px;
+}
+
+.form-block {
+  display: grid;
+  gap: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.form-block:last-of-type {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.field--full {
+  grid-column: 1 / -1;
+}
+
+.contact-number-inline {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(130px, 180px) minmax(0, 1fr);
+}
+
+label,
+.label {
+  font-size: 0.95rem;
+  font-weight: 850;
+}
+
+.field > .label {
+  display: block;
+  font-size: 1.45rem;
+  line-height: 1.15;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+.field-help {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  color: var(--text);
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #111111;
+  box-shadow: 0 0 0 4px rgba(17, 17, 17, 0.08);
+}
+
+.check-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.check-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.check-card:hover {
+  transform: translateY(-1px);
+  border-color: var(--line-strong);
+  box-shadow: 0 10px 24px rgba(16, 24, 40, 0.08);
+}
+
+.check-card input {
+  width: auto;
+  min-height: auto;
+}
+
+.check-card:has(input:checked) {
+  border-color: #111111;
+  background: #111111;
+  color: #ffffff;
+  box-shadow: 0 16px 34px rgba(17, 17, 17, 0.18);
+}
+
+.dynamic {
+  display: grid;
+  gap: 20px;
+}
+
+.dynamic__entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.dynamic__entry--triple {
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 220px) auto;
+}
+
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--surface-soft);
+  color: var(--text);
+  font-weight: 750;
+  border: 1px solid var(--line);
+}
+
+.pill button {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.secure-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 6px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  min-width: min(100%, 12rem);
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 900;
+  text-align: center;
+}
+
+.btn--primary {
+  background: #111111;
+  color: #ffffff;
+}
+
+.btn--soft {
+  background: var(--surface-soft);
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.btn--ghost {
+  background: #ffffff;
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.status-note {
+  min-height: 24px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
+.status-note[data-state="success"] {
+  color: var(--success);
+}
+
+.status-note[data-state="blocked"] {
+  color: var(--danger);
+}
+
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 34px 0;
+  background: #ffffff;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  gap: 24px;
+}
+
+.footer-column {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.footer-column h4 {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.footer-column a,
+.footer-copy {
+  color: var(--muted);
+  font-weight: 700;
+  margin: 0;
+}
+
+@media (max-width: 820px) {
+  .nav-wrap {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 0;
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .nav-links a {
+    justify-content: center;
+    padding: 0 8px;
+    font-size: 0.82rem;
+  }
+
+  .grid--2,
+  .contact-number-inline,
+  .check-grid,
+  .dynamic__entry,
+  .dynamic__entry--triple,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel__body {
+    padding: 20px;
+  }
+
+  .secure-actions,
+  .secure-actions .btn,
+  .dynamic__entry .btn,
+  .dynamic__entry--triple .btn {
+    width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <div class="brand-stack">
+      <a class="brand" href="#">Gabriel Services</a>
+      <p class="brand-subtitle">Outsource, Delivered</p>
     </div>
-    <script src="/ubiquitous-pancake/scripts/i18n.js"></script>
-  </body>
+
+    <nav aria-label="Primary navigation">
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container page-main">
+  <section class="contact-hero">
+    <h1>Contact</h1>
+  </section>
+
+  <section class="contact-hub">
+    <div class="hub-page">
+      <section class="hero-shell" aria-labelledby="contact-title">
+        <h2 id="contact-title">Tell us what support you need</h2>
+        <p>Use this sample to preview the Gabriel Services contact form before connecting it to the secure intake Worker.</p>
+      </section>
+
+      <section class="layout">
+        <div class="panel">
+          <div class="panel__body">
+            <form id="contactForm" class="site-form" method="post" novalidate>
+              
+              <section class="form-block">
+                <div class="grid grid--2">
+                  <div class="field">
+                    <label for="contactFullName">Full Name</label>
+                    <input id="contactFullName" name="full_name" type="text" autocomplete="name" required />
+                  </div>
+
+                  <div class="field">
+                    <label for="contactEmail">Email Address</label>
+                    <input id="contactEmail" name="email_address" type="email" autocomplete="email" required />
+                  </div>
+
+                  <div class="field">
+                    <label for="contactAddress2">Space / Suite / Apt</label>
+                    <input id="contactAddress2" name="space_suite_apt" type="text" autocomplete="address-line2" />
+                  </div>
+
+                  <div class="field field--full contact-number-inline">
+                    <div class="field">
+                      <label for="contactCountryCode">Country Code</label>
+                      <input id="contactCountryCode" name="country_code" type="text" inputmode="numeric" pattern="^\+?\d+$" maxlength="5" placeholder="+1" />
+                    </div>
+
+                    <div class="field">
+                      <label for="contactNumber">Contact Number</label>
+                      <input id="contactNumber" name="contact_number" type="tel" autocomplete="tel-national" inputmode="numeric" pattern="^\d+$" maxlength="20" required />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field field--service-interest">
+                  <span class="label">Services</span>
+                  <p class="field-help">Choose the requirements that covers your operations</p>
+
+                  <div class="check-grid">
+                    <label class="check-card">
+                      <input type="checkbox" name="contact_interest[]" value="Logistics Operations" />
+                      <span>Logistics Operations</span>
+                    </label>
+
+                    <label class="check-card">
+                      <input type="checkbox" name="contact_interest[]" value="Administrative Back Office" />
+                      <span>Administrative Back Office</span>
+                    </label>
+
+                    <label class="check-card">
+                      <input type="checkbox" name="contact_interest[]" value="Customer Relations" />
+                      <span>Customer Relations</span>
+                    </label>
+
+                    <label class="check-card">
+                      <input type="checkbox" name="contact_interest[]" value="IT Support" />
+                      <span>IT Support</span>
+                    </label>
+                  </div>
+                </div>
+              </section>
+
+              <section class="form-block">
+                <div class="field">
+                  <label for="bestTimeToContact">Best Time to Contact You</label>
+                  <input id="bestTimeToContact" name="best_time_to_contact" type="datetime-local" />
+                </div>
+
+                <div class="field">
+                  <label for="contactCity">City</label>
+                  <input id="contactCity" name="city" type="text" autocomplete="address-level2" />
+                </div>
+
+                <div class="field">
+                  <label for="contactState">State/Province</label>
+                  <input id="contactState" name="state_province" type="text" autocomplete="address-level1" />
+                </div>
+
+                <div class="field">
+                  <label for="contactZip">Country Zip Code</label>
+                  <input id="contactZip" name="country_zip_code" type="text" autocomplete="postal-code" inputmode="numeric" pattern="^\d+$" />
+                </div>
+
+                <div class="field">
+                  <label for="contactMessage">Message</label>
+                  <textarea id="contactMessage" name="message" rows="5" placeholder="A quick summary of what you would like us to do." required></textarea>
+                </div>
+              </section>
+
+              <section class="form-block">
+                <div class="dynamic">
+                  <div class="field">
+                    <span class="label">Inquiry About Remote Assistant</span>
+                    <p class="field-help">Share requirements for skills, area of interest, experience level, education, and languages.</p>
+
+                    <div class="check-grid">
+                      <label class="check-card">
+                        <input type="checkbox" name="remote_interest[]" value="Logistics Operations" />
+                        <span>Logistics Operations</span>
+                      </label>
+
+                      <label class="check-card">
+                        <input type="checkbox" name="remote_interest[]" value="Administrative Back Office" />
+                        <span>Administrative Back Office</span>
+                      </label>
+
+                      <label class="check-card">
+                        <input type="checkbox" name="remote_interest[]" value="Customer Relations" />
+                        <span>Customer Relations</span>
+                      </label>
+
+                      <label class="check-card">
+                        <input type="checkbox" name="remote_interest[]" value="IT Support" />
+                        <span>IT Support</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label for="contactRemoteSkillInput">Skills</label>
+                    <div class="dynamic__entry">
+                      <input id="contactRemoteSkillInput" type="text" placeholder="Add a skill: Problem Solving, Coaching" />
+                      <button type="button" id="contactRemoteSkillAdd" class="btn btn--soft">Add</button>
+                    </div>
+                    <ul id="contactRemoteSkillsList" class="pill-list" aria-label="Remote assistant skills"></ul>
+                    <input type="hidden" id="contactRemoteSkillsHidden" name="remote_assistant_skills" />
+                  </div>
+
+                  <div class="field">
+                    <label for="contactExperienceInput">Experience Level</label>
+                    <div class="dynamic__entry dynamic__entry--triple">
+                      <input id="contactExperienceInput" type="text" placeholder="Add experience area: Customer Service, Dispatch, Tier I Help Desk" />
+                      <select id="contactExperienceLevel">
+                        <option value="">Select level</option>
+                        <option value="Entry">Entry</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Mid">Mid</option>
+                        <option value="Advanced">Advanced</option>
+                        <option value="Expert">Expert</option>
+                      </select>
+                      <button type="button" id="contactExperienceAdd" class="btn btn--soft">Add</button>
+                    </div>
+                    <ul id="contactExperienceList" class="pill-list" aria-label="Contact experience"></ul>
+                    <input type="hidden" id="contactExperienceHidden" name="experience_level" />
+                  </div>
+
+                  <div class="field">
+                    <label for="contactLanguageInput">Languages</label>
+                    <div class="dynamic__entry dynamic__entry--triple">
+                      <input id="contactLanguageInput" type="text" placeholder="Add a language: Spanish, English" />
+                      <select id="contactLanguageLevel">
+                        <option value="">Select level</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Elementary">Elementary</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advance">Advance</option>
+                        <option value="Advance Professional">Advance Professional</option>
+                        <option value="Native">Native</option>
+                      </select>
+                      <button type="button" id="contactLanguageAdd" class="btn btn--soft">Add</button>
+                    </div>
+                    <ul id="contactLanguagesList" class="pill-list" aria-label="Contact languages"></ul>
+                    <input type="hidden" id="contactLanguagesHidden" name="languages" />
+                  </div>
+
+                  <div class="field">
+                    <label for="contactEducationInput">Education</label>
+                    <div class="dynamic__entry dynamic__entry--triple">
+                      <input id="contactEducationInput" type="text" placeholder="Add school, program, or certificate" />
+                      <select id="contactEducationLevel">
+                        <option value="">Select education</option>
+                        <option value="Grammar School">Grammar School</option>
+                        <option value="Some High School">Some High School</option>
+                        <option value="High School">High School</option>
+                        <option value="Some College">Some College</option>
+                        <option value="Associate Degree">Associate Degree</option>
+                        <option value="Bachelor">Bachelor</option>
+                        <option value="Masters">Masters</option>
+                        <option value="Doctorate">Doctorate</option>
+                      </select>
+                      <button type="button" id="contactEducationAdd" class="btn btn--soft">Add</button>
+                    </div>
+                    <ul id="contactEducationList" class="pill-list" aria-label="Contact education"></ul>
+                    <input type="hidden" id="contactEducationHidden" name="education" />
+                  </div>
+                </div>
+              </section>
+
+              <div class="secure-actions">
+                <button type="submit" class="btn btn--primary">Submit</button>
+                <button type="button" class="btn btn--ghost" id="clearFormBtn">Clear Form</button>
+              </div>
+
+              <div class="sr-only" aria-hidden="true">
+                <label for="contactCompanyWebsite">Leave this field empty</label>
+                <input id="contactCompanyWebsite" name="company_website" type="text" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <p id="formStatus" class="status-note" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-column">
+      <h4>Company</h4>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Careers</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Support</h4>
+      <a href="#">Contact</a>
+      <a href="#">Learning</a>
+      <a href="#">Sitemap</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Legal</h4>
+      <a href="#">T&amp;C</a>
+      <a href="#">Cookies Consent</a>
+      <a href="#">Privacy and GDPR</a>
+    </div>
+
+    <p class="footer-copy">© 2026 Gabriel Services</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const form = document.getElementById("contactForm");
+  const status = document.getElementById("formStatus");
+  const clearBtn = document.getElementById("clearFormBtn");
+
+  const groups = [
+    {
+      type: "simple",
+      inputId: "contactRemoteSkillInput",
+      buttonId: "contactRemoteSkillAdd",
+      listId: "contactRemoteSkillsList",
+      hiddenId: "contactRemoteSkillsHidden"
+    },
+    {
+      type: "pair",
+      inputId: "contactExperienceInput",
+      selectId: "contactExperienceLevel",
+      buttonId: "contactExperienceAdd",
+      listId: "contactExperienceList",
+      hiddenId: "contactExperienceHidden"
+    },
+    {
+      type: "pair",
+      inputId: "contactLanguageInput",
+      selectId: "contactLanguageLevel",
+      buttonId: "contactLanguageAdd",
+      listId: "contactLanguagesList",
+      hiddenId: "contactLanguagesHidden"
+    },
+    {
+      type: "pair",
+      inputId: "contactEducationInput",
+      selectId: "contactEducationLevel",
+      buttonId: "contactEducationAdd",
+      listId: "contactEducationList",
+      hiddenId: "contactEducationHidden"
+    }
+  ];
+
+  function getGroupValues(list) {
+    return Array.from(list.querySelectorAll(".pill"))
+      .map(function (pill) {
+        return pill.dataset.value || "";
+      })
+      .filter(Boolean);
+  }
+
+  function syncHidden(list, hidden) {
+    hidden.value = JSON.stringify(getGroupValues(list));
+  }
+
+  function createPill(value, list, hidden) {
+    const li = document.createElement("li");
+    li.className = "pill";
+    li.dataset.value = value;
+
+    const span = document.createElement("span");
+    span.textContent = value;
+
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.textContent = "×";
+    remove.setAttribute("aria-label", "Remove " + value);
+
+    remove.addEventListener("click", function () {
+      li.remove();
+      syncHidden(list, hidden);
+    });
+
+    li.appendChild(span);
+    li.appendChild(remove);
+    list.appendChild(li);
+    syncHidden(list, hidden);
+  }
+
+  function setupDynamicGroup(config) {
+    const input = document.getElementById(config.inputId);
+    const button = document.getElementById(config.buttonId);
+    const list = document.getElementById(config.listId);
+    const hidden = document.getElementById(config.hiddenId);
+    const select = config.selectId ? document.getElementById(config.selectId) : null;
+
+    function addValue() {
+      const text = String(input.value || "").trim();
+      const level = select ? String(select.value || "").trim() : "";
+      let value = "";
+
+      if (config.type === "simple") {
+        value = text;
+      }
+
+      if (config.type === "pair") {
+        if (!text || !level) {
+          status.textContent = "Please add text and select a level before adding.";
+          status.dataset.state = "blocked";
+          return;
+        }
+
+        value = text + " — " + level;
+      }
+
+      if (!value) {
+        status.textContent = "Please type a value before adding.";
+        status.dataset.state = "blocked";
+        return;
+      }
+
+      const existing = getGroupValues(list).map(function (item) {
+        return item.toLowerCase();
+      });
+
+      if (existing.includes(value.toLowerCase())) {
+        status.textContent = "That item is already added.";
+        status.dataset.state = "blocked";
+        return;
+      }
+
+      createPill(value, list, hidden);
+      input.value = "";
+
+      if (select) {
+        select.value = "";
+      }
+
+      status.textContent = "Added: " + value;
+      status.dataset.state = "success";
+      input.focus();
+    }
+
+    button.addEventListener("click", addValue);
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        addValue();
+      }
+    });
+  }
+
+  groups.forEach(setupDynamicGroup);
+
+  function hasChecked(selector) {
+    return Boolean(form.querySelector(selector + ":checked"));
+  }
+
+  clearBtn.addEventListener("click", function () {
+    form.reset();
+
+    groups.forEach(function (config) {
+      const list = document.getElementById(config.listId);
+      const hidden = document.getElementById(config.hiddenId);
+      list.innerHTML = "";
+      hidden.value = "";
+    });
+
+    status.textContent = "Form cleared.";
+    status.dataset.state = "success";
+  });
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const honeypot = document.getElementById("contactCompanyWebsite");
+
+    if (honeypot && honeypot.value.trim()) {
+      status.textContent = "Submission blocked.";
+      status.dataset.state = "blocked";
+      return;
+    }
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      status.textContent = "Please complete all required fields before submitting.";
+      status.dataset.state = "blocked";
+      return;
+    }
+
+    if (!hasChecked('input[name="contact_interest[]"]')) {
+      status.textContent = "Please select at least one service interest.";
+      status.dataset.state = "blocked";
+      return;
+    }
+
+    const data = new FormData(form);
+    const payload = {};
+
+    data.forEach(function (value, key) {
+      if (Object.prototype.hasOwnProperty.call(payload, key)) {
+        payload[key] = Array.isArray(payload[key])
+          ? payload[key].concat(value)
+          : [payload[key], value];
+      } else {
+        payload[key] = value;
+      }
+    });
+
+    console.log("Contact form sample payload:", payload);
+
+    status.textContent = "Sample ready. Payload printed in the browser console. No Worker request was sent.";
+    status.dataset.state = "success";
+  });
+})();
+</script>
+</body>
 </html>

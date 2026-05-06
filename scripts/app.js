@@ -958,10 +958,7 @@ function bindPageButtons() {
   document.querySelectorAll("[data-page]").forEach((button) => {
     button.addEventListener("click", (event) => {
       activePage = button.dataset.page;
-      if (mobileServicesMenu && mobileServicesToggle) {
-        mobileServicesMenu.hidden = true;
-        mobileServicesToggle.setAttribute("aria-expanded", "false");
-      }
+      closeServiceMenus();
       render();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
@@ -1002,6 +999,23 @@ function setupMobileNav() {
     mobileServicesMenu.hidden = true;
     mobileServicesToggle.setAttribute("aria-expanded", "false");
   }
+
+  if (isMobile && desktopServicesMenu && desktopServicesToggle) {
+    desktopServicesMenu.hidden = true;
+    desktopServicesToggle.setAttribute("aria-expanded", "false");
+  }
+}
+
+function closeServiceMenus() {
+  if (mobileServicesMenu && mobileServicesToggle) {
+    mobileServicesMenu.hidden = true;
+    mobileServicesToggle.setAttribute("aria-expanded", "false");
+  }
+
+  if (desktopServicesMenu && desktopServicesToggle) {
+    desktopServicesMenu.hidden = true;
+    desktopServicesToggle.setAttribute("aria-expanded", "false");
+  }
 }
 
 function toggleMobileServicesMenu() {
@@ -1009,6 +1023,11 @@ function toggleMobileServicesMenu() {
   const willExpand = mobileServicesMenu.hidden;
   mobileServicesMenu.hidden = !willExpand;
   mobileServicesToggle.setAttribute("aria-expanded", String(willExpand));
+
+  if (willExpand && desktopServicesMenu && desktopServicesToggle) {
+    desktopServicesMenu.hidden = true;
+    desktopServicesToggle.setAttribute("aria-expanded", "false");
+  }
 }
 
 function toggleDesktopServicesMenu() {
@@ -1016,6 +1035,11 @@ function toggleDesktopServicesMenu() {
   const willExpand = desktopServicesMenu.hidden;
   desktopServicesMenu.hidden = !willExpand;
   desktopServicesToggle.setAttribute("aria-expanded", String(willExpand));
+
+  if (willExpand && mobileServicesMenu && mobileServicesToggle) {
+    mobileServicesMenu.hidden = true;
+    mobileServicesToggle.setAttribute("aria-expanded", "false");
+  }
 }
 
 function revealItems() {

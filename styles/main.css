@@ -260,6 +260,40 @@ textarea {
   flex-wrap: wrap;
 }
 
+.desktop-services-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  z-index: 120;
+  display: grid;
+  min-width: min(320px, calc(100vw - 32px));
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-soft);
+  transform: translateX(-50%);
+}
+
+.desktop-service-option {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 850;
+  text-decoration: none;
+  transition: border-color var(--ease), color var(--ease), transform var(--ease);
+}
+
+.desktop-service-option:hover,
+.desktop-service-option:focus-visible {
+  color: #fff;
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.75fr);

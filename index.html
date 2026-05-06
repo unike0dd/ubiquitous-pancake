@@ -55,14 +55,6 @@
             Light
           </button>
         </div>
-        <div class="mobile-services-sheet" id="desktopServicesMenu" hidden>
-          <div class="mobile-services-menu-card">
-            <a class="mobile-service-option" href="/ubiquitous-pancake/services/it-support/">IT Support</a>
-            <a class="mobile-service-option" href="/ubiquitous-pancake/services/customer-relations/">Customer Relations</a>
-            <a class="mobile-service-option" href="/ubiquitous-pancake/services/logistics-operations/">Logistics</a>
-            <a class="mobile-service-option" href="/ubiquitous-pancake/services/administrative-backoffice/">Administrative BackOffice</a>
-          </div>
-        </div>
       </header>
 
       <main id="app" aria-live="polite"></main>
@@ -130,17 +122,6 @@
     </div>
     <script src="scripts/desktop-core.js"></script>
     <script src="scripts/mobile-tablet-core.js"></script>
-    <script>
-      (function(){
-        const desktopToggle = document.getElementById("desktopServicesToggle");
-        const desktopMenu = document.getElementById("desktopServicesMenu");
-        desktopToggle?.addEventListener("click", function(){
-          const isExpanded = desktopToggle.getAttribute("aria-expanded") === "true";
-          desktopToggle.setAttribute("aria-expanded", String(!isExpanded));
-          if (desktopMenu) desktopMenu.hidden = isExpanded;
-        });
-      })();
-    </script>
     <script type="module" src="scripts/app.js"></script>
   </body>
 </html>

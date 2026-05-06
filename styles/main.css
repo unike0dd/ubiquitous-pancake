@@ -716,6 +716,50 @@ fieldset {
   min-height: 24px;
 }
 
+.dynamic-group {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.inline-control {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.inline-control:has(select) {
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 0.5fr) auto;
+}
+
+.removable-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.removable-pill button {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  min-height: 22px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--text);
+  background: var(--surface-soft);
+  cursor: pointer;
+}
+
+.status[data-state="success"] {
+  color: #8ee6b2;
+}
+
+.status[data-state="blocked"] {
+  color: #ffb4a8;
+}
+
 .legal-list {
   display: grid;
   gap: 16px;
@@ -977,5 +1021,12 @@ fieldset {
   :root {
     --max: 1360px;
     --reading: 860px;
+  }
+}
+
+@media (max-width: 640px) {
+  .inline-control,
+  .inline-control:has(select) {
+    grid-template-columns: 1fr;
   }
 }
